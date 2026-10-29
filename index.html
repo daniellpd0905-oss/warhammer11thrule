@@ -667,9 +667,9 @@ dialog p {
 <div id="home">
 <div class="screen-head"><span>ARCHIVE ACCESS // 001</span><span>+++ 歡迎，操作者 +++</span></div>
 <div class="home-body">
-<div class="eyebrow">KNOWLEDGE IS POWER.</div>
-<div class="hero"><div><h1>以知識為刃。<br>以計算為盾。</h1><p>歡迎進入稜鏡的資料終端。選取左側工作清單以存取作業與工具，或啟動戰術運算，推演下一場交鋒的可能。</p><div class="actions"><button class="primary" id="launchCalc">啟動戰錘計算器 ↗</button><button class="action-secondary" id="homeMusic">♫ 選擇背景音樂</button></div></div>
-<svg class="seal" viewBox="0 0 150 180" fill="none" stroke="currentColor" aria-hidden="true"><path d="M75 5 137 38v94L75 174 13 132V38Z"/><path d="M75 15 128 43v84l-53 36-53-36V43Z" stroke-dasharray="3 6"/><circle cx="75" cy="80" r="38"/><circle cx="75" cy="80" r="28"/><path d="m75 34 11 34 31 12-31 12-11 34-11-34-31-12 31-12Z"/><path d="M75 63v34M58 80h34M45 140h60M62 147h26"/><circle cx="75" cy="80" r="6" fill="currentColor"/></svg></div>
+<div class="eyebrow">方舟世界・伊那澤瑪</div>
+<div class="hero"><div><h1>預見風暴，<br>迅捷裁決。</h1><p>來自遠東星域的伊那澤瑪，曾以預言引領方舟避開災禍。大裂隙撕裂銀河後，他們不再只是旁觀命運，而是以閃電般的行動介入戰局，聯合盟友迎戰混沌與泰倫。瀏覽方舟世界誌，或啟動戰術計算，推演下一場交鋒。</p><div class="actions"><button class="primary" id="launchCalc">啟動戰錘計算器 ↗</button><button class="action-secondary" id="homeMusic">♫ 選擇背景音樂</button></div></div>
+<img class="seal" src="izptikptpz_noback.png" alt="伊那澤瑪方舟世界徽記"></div>
 <div class="terminal-log"><p><strong>[ OK ]</strong> 個人資料終端就緒。</p><p><strong>[ OK ]</strong> 戰錘計算器已連結至本機檔案。</p><p><strong>[ INFO ]</strong> 點擊播放後啟用音樂；切換頁面不會中斷。</p><p>&gt; 等待指令 <span class="cursor" aria-hidden="true"></span></p></div>
 </div></div>
 <div id="contentview" class="contentview" hidden><div class="viewbar"><strong id="viewTitle"></strong><a id="openSeparate" class="button" target="_blank" rel="noopener noreferrer">另開分頁 ↗</a></div><p class="notice" id="frameNotice" hidden></p><iframe id="contentFrame" name="right" title="選取的工作頁面" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
@@ -687,6 +687,7 @@ const SCHOOL_BASE = 'http://alpha.kmu.edu.tw/~p112029001/';
 const WORK_LINKS=[
   { name: '終端首頁', url: null, code: '00' },
   { name: '戰錘機率計算器', url: 'warhammercount.html', code: '01' },
+  { name: '伊那澤瑪方舟世界誌', url: 'https://docs.google.com/document/d/109ZeaTNIJ2XjOSCsCTnKmfc3XqiDvea4mlSYY8MNDMc/preview' },
   { name: '關於 Daniel', url: 'f0.html', code: '02' },
   { name: '貪吃蛇遊戲', url: SCHOOL_BASE + 'f5.html' },
 ];
@@ -722,7 +723,7 @@ function renderNav() {
   nav.replaceChildren();
 
   WORK_LINKS.forEach((item, i) => {
-    if (i === 3) {
+    if (i === 4) {
       const line = document.createElement('div');
       line.className = 'navdivider';
       nav.append(line);
