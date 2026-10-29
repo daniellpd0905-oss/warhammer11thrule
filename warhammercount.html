@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark"><meta name="description" content="非官方戰錘40K第11版離散機率計算工具。部分附錄規則待核實，相關設定會阻擋計算。"><title>戰錘40K｜擲骰機率計算器</title>
+<style>
+:root{--bg:#10161b;--panel:#1a2229;--deep:#121b21;--line:#34434d;--text:#edf3f6;--muted:#b0c0ca;--teal:#66e4c3;--amber:#ffc473;--red:#ffaca4;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text);background:var(--bg);font-size:16px;line-height:1.6}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}a{color:var(--teal);text-underline-offset:3px}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.45}button,input,select,summary{min-height:44px}button,input,select{border:1px solid #536571;border-radius:7px;background:var(--deep);color:var(--text);padding:9px 11px}input:not([type=checkbox]),select{width:100%;min-width:0}input[type=checkbox]{width:19px;height:19px;min-height:19px;accent-color:var(--teal);flex-shrink:0}button:hover:not(:disabled){border-color:var(--teal)}:focus-visible{outline:3px solid var(--amber);outline-offset:3px}button.primary{background:var(--teal);color:#10231f;border-color:var(--teal);font-weight:750}.wrap{max-width:1500px;margin:auto;padding:30px 28px 48px}header{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:20px}.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--teal);font-weight:700}h1{font-size:clamp(25px,3vw,36px);line-height:1.3;letter-spacing:.02em;margin:7px 0 10px}h2{font-size:20px;margin:0 0 16px}h3{font-size:17px;margin:18px 0 10px}p{margin:8px 0}.sub{color:var(--muted);font-size:14px}.stamp{text-align:right;color:var(--muted);font-size:13px;white-space:nowrap}.stamp strong{color:var(--amber);display:block}.banner{padding:13px 17px;border:1px solid #7b6240;background:#28251e;border-radius:9px;color:#ffe0ad;font-size:14px;margin-bottom:22px}.layout{display:grid;grid-template-columns:minmax(340px,440px) minmax(0,1fr);gap:24px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px}.inputs>.panel{padding:0;overflow:hidden}.section{padding:20px;border-bottom:1px solid var(--line)}.section:last-child{border:0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.full{grid-column:1/-1}label{display:block;font-size:14px;color:var(--muted)}label>input,label>select{display:block;margin-top:5px;color:var(--text)}.check{display:flex;align-items:center;gap:9px;min-height:44px;color:var(--text)}.check input{margin:0}.hint{font-size:12px;color:var(--muted);margin:6px 0 0}.warning{color:var(--amber)}details>summary{cursor:pointer;display:list-item;font-weight:650;color:var(--text);padding:8px 0}details[open]>summary{margin-bottom:12px}details.section>summary{padding:0;min-height:32px}.rowtitle{display:flex;align-items:center;justify-content:space-between;gap:8px}.smallbtn{font-size:13px;padding:5px 10px}.dynamic-row{background:var(--deep);border:1px solid var(--line);border-radius:8px;padding:11px;margin-top:9px}.dynamic-row .grid{gap:8px}.rowcontrols{display:flex;align-items:center;justify-content:space-between;gap:12px}.toolbar{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}.toolbar .primary{flex:1}.status{border-left:3px solid var(--teal);padding:0 0 0 12px;margin:0 0 18px}.status.stale{border-color:var(--amber);color:var(--amber)}.status.error{border-color:var(--red);color:var(--red)}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:20px}.card{background:var(--deep);border:1px solid var(--line);border-radius:9px;padding:18px}.card .value{display:block;font-variant-numeric:tabular-nums;color:var(--teal);font-size:30px;font-weight:700;margin:9px 0 2px}.card:nth-child(4) .value{color:var(--amber)}.card span{font-size:13px;color:var(--muted)}.card .label{font-size:14px;color:var(--text)}.empty{padding:55px 20px;text-align:center;border:1px dashed #44555f;border-radius:10px;color:var(--muted);margin-bottom:18px}.empty strong{display:block;color:var(--text);font-size:22px;margin-bottom:10px}.empty .diceicon{font-size:38px;color:var(--teal);line-height:1;margin-bottom:18px}.metric-buttons{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.metric-buttons button[aria-pressed=true]{border-color:var(--teal);background:#1c3c35;color:var(--teal)}.query{background:var(--deep);border:1px solid var(--line);border-radius:9px;padding:16px;margin:18px 0}.querygrid{display:grid;grid-template-columns:1.4fr 1fr;gap:12px}.queryout{display:flex;justify-content:space-between;gap:12px;margin-top:12px;flex-wrap:wrap}.queryout strong{color:var(--teal);font-variant-numeric:tabular-nums}.chart{overflow:auto;min-height:260px;background:var(--deep);border-radius:8px;padding:10px}.chart svg{width:100%;min-width:500px;height:270px;display:block}.tablewrap{overflow:auto;max-height:480px}table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:right}th:first-child,td:first-child{text-align:left}thead{position:sticky;top:0;background:var(--panel)}.pager{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0}.pager span{font-size:12px;color:var(--muted)}.ruleblock{white-space:pre-line;border-left:3px solid var(--amber);padding:10px 12px;background:#2c291e;border-radius:4px;font-size:13px;margin:14px 0}.field-error{display:block;color:var(--red);font-size:12px;margin-top:4px}.field-error:empty{display:none}[aria-invalid=true]{border-color:var(--red)}[hidden]{display:none!important}.provenance{margin-top:22px;font-size:14px}.provenance details{border-top:1px solid var(--line);padding:12px 0}.provenance li{margin-bottom:8px}.provenance code{background:var(--deep);padding:2px 4px;border-radius:4px;overflow-wrap:anywhere}.provenance pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;background:var(--deep);padding:16px;border-radius:8px}.results[data-stale=true] #resultBody{opacity:.65}.mathnote{font-size:13px;color:var(--muted);margin-top:12px}.versionline{display:flex;gap:14px;align-items:center;font-size:12px;color:var(--muted);margin-bottom:12px}.dot{width:7px;height:7px;border-radius:50%;background:var(--amber);display:inline-block}.skip{position:absolute;left:10px;top:-100px;background:var(--panel);padding:10px;z-index:5}.skip:focus{top:10px}footer{font-size:12px;color:var(--muted);padding-top:24px;text-align:center}@media(min-width:1100px){.results{position:sticky;top:20px}}@media(max-width:900px){.wrap{padding:20px 16px}.layout{grid-template-columns:1fr}.stamp{display:none}.inputs{max-width:none}.results{position:static}}@media(max-width:420px){.wrap{padding:14px 10px}.section,.panel{padding:16px}.grid{gap:11px}.card{padding:13px}.card .value{font-size:25px}.querygrid{grid-template-columns:1fr}.metric-buttons button{font-size:13px;padding:8px}}
+</style></head><body>
+<a class="skip" href="#resultsTitle">跳至計算結果</a><div class="wrap">
+<header><div><div class="eyebrow">PROBABILITY / TACTICAL ANALYSIS</div><h1>戰錘40K 擲骰機率計算器</h1><p class="sub">從每一次擲骰，到整隊全滅。完整離散分布・理論機率／浮點運算</p></div><div class="stamp"><strong>11TH EDITION</strong>2026年6月核心規則<br>查核：2026-10-16（台灣）</div></header>
+<div class="banner"><strong>非官方工具・部分規則待核實。</strong>BS／WS、命中、致傷及掩護修正已依使用者補充的02.02規則啟用。重擲及減傷組合仍待核實，會阻擋計算。未全面核對最新 App／FAQ。輸入代表你已確認能力及戰場條件適用；本工具不驗證軍表、射程、視線或地形位置。</div>
+<main class="layout"><div class="inputs"><form id="settings" novalidate><div class="panel">
+<section class="section"><div class="versionline"><span class="dot"></span> 自訂示例・重新整理即還原</div><h2>01 / 攻擊與目標</h2><div class="grid">
+<label>攻擊類型<select id="phase"><option value="ranged">射擊 Ranged</option><option value="melee">近戰 Melee</option></select></label><label>輸入模式<select id="mode"><option value="direct">直接門檻</option><option value="stats">數值推導</option></select></label>
+<label class="check full"><input type="checkbox" id="psychic">靈能攻擊 Psychic</label>
+<label class="full">攻擊量方式<select id="attackMode"><option value="total">整組總攻擊表示法</option><option value="models">模型數 × 每模型攻擊（各自獨立擲骰）</option></select></label>
+<label id="modelLabel" hidden>攻擊模型數<input id="modelCount" type="number" min="1" max="50" value="1"></label>
+<label id="attackLabel" class="full"><span id="attackText">整組總攻擊 A</span><input id="attack" value="10" maxlength="30" autocomplete="off" spellcheck="false" aria-describedby="diceHelp"></label>
+<label>每次傷害 D<input id="damage" value="2" maxlength="30" autocomplete="off" spellcheck="false" aria-describedby="diceHelp"></label><div class="hint" id="diceHelp">格式：12、D3、D6、2D6+2。<br>最多20顆骰，加值0～50。<br>最大總攻擊300，單次傷害50。</div>
+<label>目標模型數 N<input id="N" type="number" min="1" max="30" value="5"></label><label>每模型耐久 W<input id="W" type="number" min="1" max="50" value="2"></label></div><p class="hint">同規格、全體滿耐久。每模型多把同款武器請輸入其合計攻擊量；隨機骰數須合併成等價骰式。</p></section>
+<section class="section"><h2>02 / 命中、致傷與豁免</h2><div id="directFields" class="grid"><label>基礎命中（尚未修正）<select id="hit" data-threshold="3"></select></label><label>基礎致傷（尚未修正）<select id="wound" data-threshold="4"></select></label><label class="full">有效護甲門檻（已計入AP）<select id="save" data-threshold="4" data-none="true"></select></label><p class="hint full">命中尚未計入BS／WS修正、掩護及命中擲骰修正；致傷尚未計入擲骰修正。此模式不再套用AP。</p></div>
+<div id="statsFields" class="grid" hidden><label><span id="skillText">BS 射擊能力值</span><select id="skill" data-threshold="3"></select></label><label>武器力量 S<input id="S" type="number" min="1" max="100" value="4"></label><label>目標韌性 T<input id="T" type="number" min="1" max="100" value="4"></label><label>AP（0或負整數）<input id="AP" type="number" min="-20" max="0" value="0"></label><label class="full">目標護甲 Sv<select id="Sv" data-threshold="4" data-seven="true"></select></label><p class="hint full">S／T 1～100，AP −20～0 是工具輸入限制。切回此模式會保留本頁數值；不從門檻反推S／T。</p></div>
+<label style="margin-top:14px">無敵豁免 InSv<select id="inv" data-threshold="99" data-none="true"></select></label><p class="hint">護甲與無敵取較有利者；不連續擲兩次。</p><div id="derived" class="mathnote" aria-live="polite"></div></section>
+<details class="section"><summary>03 / 進攻效果</summary><div class="grid">
+<label>命中重擲<select id="hr" data-reroll></select></label><label>致傷重擲<select id="wr" data-reroll></select></label><label>未修正命中暴擊<select id="hcrit" data-threshold="6"></select></label><label>未修正致傷暴擊<select id="wcrit" data-threshold="6"></select></label><p class="hint warning full">重擲規則待官方附錄核實。重擲非暴擊可能重擲成功骰，僅能用於允許該操作的能力。降低暴擊門檻亦須有相應能力。</p>
+<label class="check full"><input id="sustained" type="checkbox">連擊 Sustained Hits</label><label class="full">額外命中數 X（固定整數1～10）<input id="X" type="number" min="1" max="10" value="1" disabled></label>
+<label class="check full"><input id="lethal" type="checkbox">致命命中 Lethal Hits 可用</label><label class="full">本次Lethal策略<select id="useLethal" disabled><option value="yes">採用自動致傷</option><option value="no">不採用，照常擲致傷</option></select></label>
+<label class="check full"><input id="dev" type="checkbox">毀滅致傷 Devastating Wounds</label><label class="check full"><input id="torrent" type="checkbox">洪流 Torrent</label><p id="torrentNote" class="hint full" hidden>Torrent自動命中：命中門檻、命中重擲、命中暴擊及命中相關修正不生效；不觸發連擊／Lethal。致傷及其效果仍生效。</p></div></details>
+<details class="section"><summary>04 / 防禦與條件式FNP</summary><label class="check"><input id="half" type="checkbox">傷害減半（待核實，啟用會阻擋）</label><label>固定減傷 r（0為停用）<input id="reduction" type="number" min="0" max="50" value="0"></label><p class="hint">候選式 max(1, ceil(D/q − r)) 尚未啟用。FNP與豁免仍可使實際損失為0。</p><div class="rowtitle"><h3>不感疼痛 Feel No Pain</h3><button id="addFnp" class="smallbtn" type="button">＋ 新增條件</button></div><div id="fnpRows"></div><p class="hint">每一傷害點獨立擲骰；依普通／致命傷害及Psychic標記，選當下最有利的適用門檻，只用一條。沒有適用列時不作FNP。</p></details>
+<details class="section"><summary>05 / 修正來源與Psychic選擇</summary><label class="check"><input id="cover" type="checkbox">目標具掩護 Benefit of Cover</label><label class="check"><input id="ignoreCover" type="checkbox" disabled>Psychic：忽略掩護的BS惡化</label><p class="hint">掩護在射擊時惡化BS 1；近戰不適用。Psychic可逐項選擇忽略BS／WS及命中修正，不能藉此忽略致傷修正。</p>
+<div id="modifierLists"></div><p class="hint warning">BS／WS先合計改善／惡化，再限制在2+～6+；命中與致傷擲骰各自先合計所有啟用且未忽略的來源，再限制在−1～＋1。例如＋2與−1合計為＋1。能力值與擲骰修正分開處理。</p></details>
+<div class="section"><div id="ruleBlocks" class="ruleblock" hidden></div><div id="inputErrors" role="alert" class="field-error"></div><div class="toolbar"><button id="calculate" class="primary" type="submit">計算機率</button><button id="cancel" type="button" disabled>取消</button><button id="reset" type="button">重設</button></div><p class="hint">設定只存在本頁記憶體；沒有登入、儲存或追蹤。重新整理即清空。</p></div>
+</div></form></div>
+<section class="results panel" id="results" aria-labelledby="resultsTitle"><div class="rowtitle"><h2 id="resultsTitle" tabindex="-1">計算結果</h2><span class="sub">R / L / K</span></div><p id="status" class="status" role="status" aria-live="polite">待計算・請確認左側的自訂示例</p>
+<div class="cards"><div class="card"><span class="label">期望潛在傷害 R</span><strong class="value" id="meanR">—</strong><span>未扣除過量損耗</span></div><div class="card"><span class="label">期望實際損失 L</span><strong class="value" id="meanL">—</strong><span>依模型逐包扣除耐久</span></div><div class="card"><span class="label">期望擊殺數 K</span><strong class="value" id="meanK">—</strong><span>完整模型傷害狀態</span></div><div class="card"><span class="label">全滅機率</span><strong class="value" id="wipe">—</strong><span>P(K = 目標模型數)</span></div></div>
+<div id="empty" class="empty"><div class="diceicon" aria-hidden="true">⚄</div><strong>讓每個可能結果都被看見</strong>按「計算機率」後，顯示完整分布與門檻查詢。<br>初始畫面不預填結果。</div>
+<div id="resultBody" hidden><div class="query"><div class="querygrid"><label>查詢傷害／擊殺定義<select id="queryType"><option value="R">R：潛在傷害</option><option value="L">L：實際耐久損失</option><option value="K">K：擊殺模型數</option></select></label><label>查詢值 d／k<input id="queryValue" type="number" min="0" max="1000000" value="5"></label></div><div id="queryError" class="field-error" role="alert"></div><div class="queryout"><span id="exactLabel">恰好</span><strong id="exact">—</strong><span id="tailLabel">至少</span><strong id="tail">—</strong></div><p class="hint">只查詢本次已計算分布，不重新運算戰鬥。</p></div>
+<h3>結果分布</h3><div class="metric-buttons" role="group" aria-label="選擇分布"><button type="button" data-metric="R" aria-pressed="true">潛在傷害 R</button><button type="button" data-metric="L" aria-pressed="false">實際損失 L</button><button type="button" data-metric="K" aria-pressed="false">擊殺數 K</button></div><p id="metricDefinition" class="sub"></p><div id="chart" class="chart"></div><p id="chartNote" class="hint"></p><p id="barReadout" class="hint" aria-live="polite">滑鼠指向或鍵盤聚焦長條，可讀取機率。</p>
+<details><summary>完整機率表（含零機率值）</summary><div class="pager"><button id="prev" type="button">上一頁</button><span id="pageLabel"></span><button id="next" type="button">下一頁</button></div><div class="tablewrap"><table><caption id="tableCaption">完整分布</caption><thead><tr><th>值</th><th>恰好 P(X=x)</th><th>至少 P(X≥x)</th></tr></thead><tbody id="distributionRows"></tbody></table></div></details><p id="numerical" class="mathnote"></p></div>
+<div class="provenance"><details><summary>讀懂R、L、K與模型假設</summary><p><strong>R 潛在傷害：</strong>將所有計畫攻擊用於無耐久／數量上限的假想目標，結算相同防禦、減傷與FNP後累加；不扣過量損耗，實際目標全滅後仍繼續。這是反事實比較量。</p><p><strong>L 實際耐久損失：</strong>按真實模型逐包分配，單包過量不跨模型；全滅即停止增加。不能用min(R,NW)替代。</p><p><strong>K 擊殺數：</strong>由每個模型的剩餘耐久狀態計算；全滅是P(K=N)，不能用平均傷害除W。</p><p>一次只處理一種武器。所有目標的防禦及條件式能力相同，並在整批攻擊中維持不變；不含死亡觸發、復活、半血條件或其他範圍外效果。先結算全部普通傷害，再逐包結算Devastating；各傷害包獨立決定隨機D及逐點FNP。</p></details>
+<details><summary>規則來源、查核與精確缺口</summary><p>採用官方2026年6月、88頁Core Rules；2026-10-16（台灣）查核。已下載並抽取全文，視覺核對第18頁骰面符號。未宣稱所有最新App／FAQ均已驗證。</p><ul><li>05.01～05.04：自然1、暴擊、S／T致傷、護甲／無敵與傷害。</li><li>13.08：掩護惡化遠程BS。</li><li>24.02、24.12：重複核心能力不疊加，可選當下適用者；FNP逐點。</li><li>24.10、24.23、24.29、24.36、24.37：Devastating、Lethal選擇、Psychic、Sustained、Torrent。</li></ul><p><strong>尚需官方原文：</strong>附錄01.05.01～.02（自動成功與重擲，尤其「重擲失敗」遇修正的判定）；02.02.01～.03（尚未提供的隨機數值及減半／減傷順序）；05.04.02與相關FAQ（減傷是否及何時作用於Devastating的致命傷害）。目前自動成功依核心能力的「不擲該骰」實作；如官方附錄有不同例外，需更新。</p><p>2026-10-16已依使用者提供的核心02.02摘要啟用能力值與擲骰修正；此為使用者提供的規則依據，並非另行查核了完整官方附錄。命中／致傷總和≥＋2時採＋1，≤−2時採−1。AP維持本工具0或負整數的既定記法。重擲與減傷仍待相關條文，會阻擋計算；其候選函式僅供數學測試。降低暴擊門檻及FNP適用條件由使用者確認能力授權。</p><ul><li><a href="https://www.warhammer-community.com/en-gb/articles/nhqt9wx3/new40k-rules-download-the-free-core-rules-now/" target="_blank" rel="noopener">官方第11版發布頁</a></li><li><a href="https://assets.warhammer-community.com/eng_01-06_warhammer40k_new40k_core_rules-was6fbu1ix-hfewhmxyiy.pdf" target="_blank" rel="noopener">官方Core Rules PDF</a></li><li><a href="https://www.warhammer-community.com/en-gb/downloads/warhammer-40000/" target="_blank" rel="noopener">官方更新入口</a></li><li><a href="https://www.wahapedia.ru/wh40k11ed/the-rules/rules-appendix/" target="_blank" rel="noopener">非官方附錄：僅定位待查章節</a></li><li><a href="https://assets.warhammer-community.com/eng_12-06_warhammer40000_event_companion-s3bfb5f9s1-ivswuij3fo.pdf" target="_blank" rel="noopener">官方Event Companion：附錄與FAQ位於App</a></li></ul></details>
+<details><summary>操作方式與工程限制</summary><ol><li>填入攻擊量、隨機D及滿耐久目標；選直接或數值推導模式。</li><li>按需要展開進攻、防禦、修正。待核實組合會顯示缺少的條文，不會產生猜測結果。</li><li>按「計算機率」。以R、L、K切換圖表／完整表格；查詢值可獨立更改。</li><li>修改戰鬥參數會取消進行中的工作，舊結果標為待重算；「重設」清空結果及本頁暫存。</li></ol><p>模型1～50、目標1～30、W1～50、最大總攻擊300、單次D最大50、連擊X1～10。高複雜度組合即使各欄合法也可能拒算。預估成本上限3,000萬次、聯合狀態160,000；實算另設3,000萬次與15秒保護。每類修正與FNP各最多20列，修正幅度1～20。這些是工程限制，並非遊戲規則或硬體效能保證。</p><p>以內嵌Blob Worker隔離計算。取消會終止Worker；工作編號防止舊結果覆蓋。瀏覽器需支援Worker、Blob、structuredClone及現代JavaScript。若瀏覽器／安全政策不允許Blob Worker，顯示錯誤；沒有主執行緒長時間計算備援。</p><p>沒有隨機模擬、尾端截斷或總和強制正規化。總和容許誤差10⁻⁹；偵測負值、非法值、總和異常或浮點下溢時拒絕結果。所有結果仍受雙精度浮點精度限制。極小非零機率以科學記號呈現。</p><p>SVG圖表超過120個值時合併為區間顯示並標示；完整表格及門檻查詢使用未合併分布。表格每頁100列。</p></details>
+<details><summary>實際驗證紀錄與尚未驗證項目</summary><div id="testReport"><p>本次修正後實際執行：Node v24.19.0 / Linux，2026-10-16（台灣）。29組核心測試通過，含新增8組修正測試。先前6項工作生命週期／數值檢查紀錄保留於審查包，這次未重跑該組；沒有以Node測試冒稱瀏覽器驗收。</p><ul><li>2D6 exact convolution and independent per-model attacks</li><li>Candidate reroll mathematics (NOT official-rule certification)</li><li>Modifier sum +2 -1 = +1, separate skill, enabled calculation</li><li>Candidate damage transform D3 half and minimum1; public gate</li><li>D2 FNP4+ binomial per wound</li><li>Core fixture two D3 packets versus 3xW2: R6 L4 K2</li><li>A10 reference case complete distributions and exact wipe</li><li>Equivalent input modes full-distribution equality</li><li>Independent exhaustive enumeration: Torrent</li><li>Independent exhaustive enumeration: Sustained+Lethal</li><li>Independent exhaustive enumeration: Lethal+Devastating auto</li><li>Independent exhaustive enumeration: Lethal+Devastating decline</li><li>Independent exhaustive enumeration: Mixed normal/dev correlation and order</li><li>Independent exhaustive enumeration: Psychic/mortal FNP intersections</li><li>Order-sensitive fixture: normal D1 then mortal D2, N2 W2</li><li>FNP chooses one applicable best threshold by independent markers</li><li>Psychic source selection and cover; ignored sources produce baseline</li><li>Natural1 fails; natural critical beats threshold; no modified critical</li><li>Boundary queries, absorbing wipe, potential exceeds actual capacity</li><li>Validation rejects blank/negative/fraction/invalid dice and huge inputs</li><li>Rule gap combinations return no calculated result</li><li>Hit modifier +1 changes complete binomial distribution</li><li>Wound modifier +1 and simultaneous hit+wound modifiers</li><li>Sum each roll source before capping both signs</li><li>BS/WS 2+..6+ cap is separate from roll +/-1 cap</li><li>Cover worsens ranged BS; melee ignores cover; Psychic can ignore cover</li><li>Psychic ignores selected sources before summing; cannot ignore wound modifiers</li><li>Modifiers preserve critical faces and natural1, including Torrent</li><li>Direct and stats modes remain equal with cover and stacked modifiers</li></ul><p>指定範例：E(R)=3.3333333333333304；E(L)=3.327881359654691；E(K)=1.6639406798273455；全滅率=1.5461966703500474%。</p><p>本次單次效能觀測（非其他裝置保證）：</p><pre>[
+  {
+    &quot;name&quot;: &quot;default&quot;,
+    &quot;ms&quot;: 0,
+    &quot;work&quot;: 238,
+    &quot;estimate&quot;: {
+      &quot;ops&quot;: 1250,
+      &quot;states&quot;: 11,
+      &quot;maxPackets&quot;: 10,
+      &quot;maxR&quot;: 20
+    },
+    &quot;sums&quot;: {
+      &quot;R&quot;: 0.9999999999999992,
+      &quot;L&quot;: 0.9999999999999991,
+      &quot;K&quot;: 0.9999999999999991
+    }
+  },
+  {
+    &quot;name&quot;: &quot;60 attacks random D6&quot;,
+    &quot;ms&quot;: 7,
+    &quot;work&quot;: 80642,
+    &quot;estimate&quot;: {
+      &quot;ops&quot;: 117114,
+      &quot;states&quot;: 61,
+      &quot;maxPackets&quot;: 60,
+      &quot;maxR&quot;: 360
+    },
+    &quot;sums&quot;: {
+      &quot;R&quot;: 0.9999999999999951,
+      &quot;L&quot;: 0.999999999999995,
+      &quot;K&quot;: 0.9999999999999951
+    }
+  },
+  {
+    &quot;name&quot;: &quot;20 attacks sustained/dev&quot;,
+    &quot;ms&quot;: 29,
+    &quot;work&quot;: 45620,
+    &quot;estimate&quot;: {
+      &quot;ops&quot;: 54408,
+      &quot;states&quot;: 861,
+      &quot;maxPackets&quot;: 40,
+      &quot;maxR&quot;: 120
+    },
+    &quot;sums&quot;: {
+      &quot;R&quot;: 0.999999999999998,
+      &quot;L&quot;: 0.9999999999999984,
+      &quot;K&quot;: 0.9999999999999987
+    }
+  },
+  {
+    &quot;name&quot;: &quot;300 plain attacks&quot;,
+    &quot;ms&quot;: 82,
+    &quot;work&quot;: 180906,
+    &quot;estimate&quot;: {
+      &quot;ops&quot;: 277524,
+      &quot;states&quot;: 301,
+      &quot;maxPackets&quot;: 300,
+      &quot;maxR&quot;: 300
+    },
+    &quot;sums&quot;: {
+      &quot;R&quot;: 0.9999999999999767,
+      &quot;L&quot;: 0.9999999999999767,
+      &quot;K&quot;: 0.9999999999999767
+    }
+  }
+]</pre><p>BS／WS、命中、致傷及掩護已依使用者補充啟用；重擲與減傷的候選數學測試仍不代表相關官方條文已核實。</p></div><p class="warning">未完成：瀏覽器file://、GitHub Pages實機測試、Blob Worker瀏覽器相容性、手機與鍵盤實機驗收、刷新／離線操作及真實介面截圖。本環境沒有可用的瀏覽器QA技能，因此未啟動預覽、未製造截圖。不能將此版本視為完整驗收。</p></details>
+<details><summary>GitHub Pages發布與作業交付</summary><ol><li>選定你有寫入權限的GitHub儲存庫，把此檔案以<code>index.html</code>放在欲發布分支的根目錄。</li><li>開啟 Settings → Pages → Build and deployment，Source選擇 Deploy from a branch。</li><li>選實際分支（例如main）及<code>/(root)</code>，按Save。</li><li>等待部署完成，使用GitHub Pages畫面提供的真實網址；在未登入／無痕視窗開啟確認。</li><li>另以本機file://、斷網重整、手機寬度、鍵盤操作及「取消」測試，再擷取真實畫面。</li></ol><p>本次未指定儲存庫，且GitHub工具沒有回傳可用的已安裝帳戶；未建立儲存庫、未推送、未發布，沒有可繳交的真實網站網址或截圖。完成部署與上述驗證前，請勿宣稱已完成作業。</p><p><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noopener">GitHub官方發布來源設定說明（已查核）</a></p><p>概念參考：<a href="https://www.wathammer.com/" target="_blank" rel="noopener">Wathammer／甲魚的數學戰鎚</a>。本實作重新設計，沒有使用原站JavaScript、品牌素材或追蹤碼；非官方授權產品。</p></details></div>
+</section></main><footer>非官方機率工具 · 單一HTML · 無外部執行資源 · 設定僅存在當前頁面</footer></div>
+<script id="engine-source">function createEngine() {
+'use strict';
+const LIMIT={attacks:300,damage:50,models:50,targets:30,wounds:50,sustained:10,ops:30000000,states:160000,ms:15000};
+let work=0,started=0,running=false;
+function tick(n=1){if(!running)return;work+=n;if(work>LIMIT.ops)throw Error('運算超過安全預算；請降低總攻擊、連擊、傷害骰數或目標耐久。未產生部分結果。');if((work%4096)<n&&Date.now()-started>LIMIT.ms)throw Error('運算超過15秒保護期限，請降低設定。未截斷分布。');}
+function mul(a,b){const x=a*b;if(a>0&&b>0&&x===0)throw Error('此設定超出雙精度浮點的極小機率範圍；未刪除尾端，請降低攻擊數。');return x;}
+function integer(v,lo,hi,label){if(String(v).trim()===''||!Number.isSafeInteger(Number(v))||Number(v)<lo||Number(v)>hi)throw Error(label+'須為'+lo+'～'+hi+'的整數');return Number(v);}
+function add(m,k,p){if(p!==0)m.set(k,(m.get(k)||0)+p);}
+function conv(a,b){const out=Array(a.length+b.length-1).fill(0);for(let i=0;i<a.length;i++)if(a[i])for(let j=0;j<b.length;j++)if(b[j]){tick();out[i+j]+=mul(a[i],b[j]);}return out;}
+function dice(text){const s=String(text).replace(/\s+/g,'').toUpperCase();let a;
+ if(/^\d+$/.test(s)){const n=integer(s,1,300,'固定值');a=Array(n+1).fill(0);a[n]=1;return a;}
+ const m=/^(\d*)D([36])(?:\+(\d+))?$/.exec(s);if(!m)throw Error('僅接受正整數、nD3、nD6及加非負整數，例如2D6+2。');
+ const n=integer(m[1]||1,1,20,'骰數'),sides=Number(m[2]),plus=integer(m[3]||0,0,50,'骰式加值');
+ a=[1];const b=Array(sides+1).fill(1/sides);b[0]=0;for(let i=0;i<n;i++)a=conv(a,b);return Array(plus).fill(0).concat(a);
+}
+function clamp(x,a,b){return Math.max(a,Math.min(b,x));}
+function wound(s,t){return s>=2*t?2:s>t?3:s===t?4:2*s<=t?6:5;}
+function roll(threshold,crit,mod,reroll){const out={fail:0,normal:0,critical:0};
+ const classify=(r,modifier)=>r===1?'fail':r>=crit?'critical':r+modifier>=threshold?'normal':'fail';
+ for(let r=1;r<=6;r++){
+ // Candidate appendix semantics: reroll eligibility before roll modifiers. Public rule gate blocks all rerolls pending official text.
+ const again=reroll==='ones'?r===1:reroll==='failed'?classify(r,0)==='fail':reroll==='noncrit'?classify(r,0)!=='critical':false;
+ if(again){for(let s=1;s<=6;s++)out[classify(s,mod)]+=1/36;}else out[classify(r,mod)]+=1/6;
+ }return out;
+}
+function normalize(c){const z=structuredClone(c);z.N=integer(c.N,1,30,'目標模型數');z.W=integer(c.W,1,50,'耐久');
+ z.modelCount=c.attackMode==='models'?integer(c.modelCount,1,50,'攻擊模型數'):1;
+ let a=dice(c.attack);if((a.length-1)*z.modelCount>300)throw Error('最大可能總攻擊超過300；請降低模型數或攻擊骰式。');
+ z.A=[1];for(let i=0;i<z.modelCount;i++)z.A=conv(z.A,a);
+ z.D=dice(c.damage);if(z.D.length-1>50)throw Error('單次傷害最大可能值不可超過50。');
+ z.hit=c.mode==='stats'?integer(c.skill,2,6,'BS／WS'):integer(c.hit,2,6,'基礎命中');
+ z.wound=c.mode==='stats'?wound(integer(c.S,1,100,'S'),integer(c.T,1,100,'T')):integer(c.wound,2,6,'基礎致傷');
+ const sv=c.mode==='stats'?integer(c.Sv,2,7,'Sv'):integer(c.save,2,99,'有效護甲門檻');
+ z.armour=c.mode==='stats'?sv-integer(c.AP,-20,0,'AP'):sv;
+ z.inv=integer(c.inv,2,99,'無敵豁免');z.save=Math.min(z.armour,z.inv);z.saveFail=z.save>6?1:(z.save-1)/6;
+ z.hcrit=integer(c.hcrit,2,6,'命中暴擊');z.wcrit=integer(c.wcrit,2,6,'致傷暴擊');z.X=c.sustained?integer(c.X,1,10,'連擊X'):0;
+ z.reduction=integer(c.reduction,0,50,'固定減傷');
+ if(!['none','ones','failed','noncrit'].includes(c.hr)||!['none','ones','failed','noncrit'].includes(c.wr))throw Error('重擲模式無效');
+ z.mods={skill:[],hit:[],wound:[]};
+ for(const kind of Object.keys(z.mods)){for(const row of c.mods[kind]||[]){const amount=integer(row.amount,1,20,'修正幅度');if(![-1,1].includes(Number(row.sign)))throw Error('修正方向無效');z.mods[kind].push({...row,amount,sign:Number(row.sign),ignored:Boolean(c.psychic&&kind!=='wound'&&row.ignore)});}}
+ if(c.cover&&c.phase==='ranged')z.mods.skill.push({name:'掩護 Cover',amount:1,sign:1,on:true,ignored:Boolean(c.psychic&&c.ignoreCover)});
+ const total=kind=>z.mods[kind].reduce((a,r)=>a+(r.on&&!r.ignored?r.amount*r.sign:0),0);
+ z.skillDelta=total('skill');z.hitMod=clamp(total('hit'),-1,1);z.woundMod=clamp(total('wound'),-1,1);z.hitRaw=total('hit');z.woundRaw=total('wound');
+ z.finalSkill=clamp(z.hit+z.skillDelta,2,6);
+ z.fnp=(c.fnp||[]).map(r=>{if(!['all','mortal','psychic','both'].includes(r.condition))throw Error('FNP條件無效');return {...r,threshold:integer(r.threshold,2,6,'FNP門檻')};});
+ z.blocks=[];
+ if(!c.torrent&&c.hr!=='none')z.blocks.push('命中重擲：需官方附錄01.05.02及02.02.01，確認重擲判定時點。');
+ if(c.wr!=='none')z.blocks.push('致傷重擲：需官方附錄01.05.02及02.02.01，確認重擲判定時點。');
+ if(c.half||z.reduction)z.blocks.push('減半／固定減傷：需官方附錄02.02.01、05.04.02及對Devastating的適用條文。候選式尚未啟用。');
+ return z;
+}
+function fnpThreshold(z,mortal){const a=z.fnp.filter(r=>r.condition==='all'||r.condition==='mortal'&&mortal||r.condition==='psychic'&&z.psychic||r.condition==='both'&&mortal&&z.psychic);return a.length?Math.min(...a.map(r=>r.threshold)):7;}
+function binomial(n,p){let a=[1];for(let i=0;i<n;i++)a=conv(a,[1-p,p]);return a;}
+function damageDist(D,q,r,fnp){let out=Array(D.length).fill(0);for(let d=0;d<D.length;d++)if(D[d]){const n=Math.max(1,Math.ceil(d/q-r)),b=binomial(n,fnp===7?1:(fnp-1)/6);for(let i=0;i<b.length;i++)out[i]+=mul(D[d],b[i]);}while(out.length>1&&out.at(-1)===0)out.pop();return out;}
+function jointConv(a,b){const out=new Map();for(const [ka,pa]of a)for(const [kb,pb]of b){tick();const [an,am]=ka.split(',').map(Number),[bn,bm]=kb.split(',').map(Number);add(out,(an+bn)+','+(am+bm),mul(pa,pb));}if(out.size>LIMIT.states)throw Error('聯合分布超過160,000個狀態，請降低攻擊或連擊。');return out;}
+function single(z){const w=roll(z.wound,z.wcrit,z.woundMod,z.wr),h=z.torrent?{fail:0,normal:1,critical:0}:roll(z.finalSkill,z.hcrit,z.hitMod,z.hr);
+ const hit=new Map();add(hit,'0,0',w.fail);add(hit,'1,0',w.normal*z.saveFail);add(hit,'0,0',w.normal*(1-z.saveFail));
+ if(z.dev)add(hit,'0,1',w.critical);else {add(hit,'1,0',w.critical*z.saveFail);add(hit,'0,0',w.critical*(1-z.saveFail));}
+ const original=z.lethal&&z.useLethal?new Map([['0,0',1-z.saveFail],['1,0',z.saveFail]]):hit;
+ let critical=original;for(let i=0;i<z.X;i++)critical=jointConv(critical,hit);
+ const out=new Map();add(out,'0,0',h.fail);for(const[k,p]of hit)add(out,k,p*h.normal);for(const[k,p]of critical)add(out,k,p*h.critical);return out;
+}
+function estimate(z,s){const A=z.A.length-1,H=A*(z.X+1),D=z.D.length-1,nw=z.N*z.W;
+ const special=[...s.keys()].some(k=>Number(k.split(',')[1])>0),singleR=(z.X+1)*D;
+ const states=special?(H+1)*(H+2)/2:H+1;
+ const ops=A*states*s.size/3+A*A*(singleR+1)*(singleR+1)/2+2*(H+1)*(nw+1)*(D+1);
+ return {ops:Math.ceil(ops),states:Math.ceil(states),maxPackets:H,maxR:H*D};
+}
+function potentialSingle(s,dn,dm){const maxn=Math.max(...[...s.keys()].map(k=>+k.split(',')[0])),maxm=Math.max(...[...s.keys()].map(k=>+k.split(',')[1]));
+ const np=[[1]],mp=[[1]];for(let i=1;i<=maxn;i++)np.push(conv(np.at(-1),dn));for(let i=1;i<=maxm;i++)mp.push(conv(mp.at(-1),dm));let out=[];
+ for(const[k,p]of s){const[n,m]=k.split(',').map(Number),d=conv(np[n],mp[m]);for(let i=0;i<d.length;i++)out[i]=(out[i]||0)+mul(p,d[i]);}return Array.from(out,v=>v||0);
+}
+function step(v,d,N,W){const cap=N*W,out=Array(cap+1).fill(0);for(let l=0;l<v.length;l++)if(v[l])for(let x=0;x<d.length;x++)if(d[x]){tick();const to=l===cap?cap:l+Math.min(x,W-l%W);out[to]+=mul(v[l],d[x]);}return out;}
+function settle(joint,dn,dm,N,W){let maxn=0,maxm=0;const byn=new Map();for(const[k,p]of joint){const[n,m]=k.split(',').map(Number);maxn=Math.max(maxn,n);maxm=Math.max(maxm,m);if(!byn.has(n))byn.set(n,[]);byn.get(n).push([m,p]);}
+ const groups=Array.from({length:maxm+1},()=>Array(N*W+1).fill(0));let v=Array(N*W+1).fill(0);v[0]=1;
+ for(let n=0;n<=maxn;n++){for(const[m,p]of byn.get(n)||[])for(let l=0;l<v.length;l++)if(v[l])groups[m][l]+=mul(p,v[l]);if(n<maxn)v=step(v,dn,N,W);}
+ // Horner application of the mortal-packet transition: all normal packets precede all mortal packets.
+ let L=groups[maxm];for(let m=maxm-1;m>=0;m--){L=step(L,dm,N,W);for(let l=0;l<L.length;l++)L[l]+=groups[m][l];}
+ const K=Array(N+1).fill(0);L.forEach((p,l)=>K[Math.floor(l/W)]+=p);return {L,K};
+}
+function check(a,label){let s=0;for(const p of a){if(!Number.isFinite(p)||p<0)throw Error(label+'包含非法機率');s+=p;}if(Math.abs(s-1)>1e-9)throw Error(label+'機率總和不符合1：'+s);return s;}
+function calculate(config,progress=()=>{}){work=0;started=Date.now();running=true;try{const z=normalize(config);if(z.blocks.length)throw Error('規則待核實，未計算：\n'+z.blocks.join('\n'));
+ const s=single(z),budget=estimate(z,s);if(budget.ops>LIMIT.ops||budget.states>LIMIT.states)throw Error('預估成本 '+budget.ops.toLocaleString()+' 次／'+budget.states.toLocaleString()+' 狀態超出安全預算（3,000萬次／160,000狀態）。請降低攻擊、連擊、傷害或目標耐久。');
+ progress('建立完整離散分布');const dn=damageDist(z.D,1,0,fnpThreshold(z,false)),dm=damageDist(z.D,1,0,fnpThreshold(z,true));
+ const sr=potentialSingle(s,dn,dm);let j=new Map([['0,0',1]]),mixed=new Map(),r=[1],R=[];
+ for(let a=0;a<z.A.length;a++){if(z.A[a]){for(const[k,p]of j)add(mixed,k,mul(p,z.A[a]));for(let x=0;x<r.length;x++)R[x]=(R[x]||0)+mul(r[x],z.A[a]);}if(a<z.A.length-1){j=jointConv(j,s);r=conv(r,sr);} }
+ R=Array.from(R,v=>v||0);progress('按普通／Devastating順序分配傷害');const {L,K}=settle(mixed,dn,dm,z.N,z.W);
+ const sums={R:check(R,'R'),L:check(L,'L'),K:check(K,'K')};const mean=a=>a.reduce((s,p,i)=>s+p*i,0);
+ return {R,L,K,means:{R:mean(R),L:mean(L),K:mean(K)},wipe:K[z.N],sums,elapsed:Date.now()-started,work,budget,thresholds:{hit:z.finalSkill,wound:z.wound,save:z.save},fnp:{normal:fnpThreshold(z,false),mortal:fnpThreshold(z,true)}};
+}finally{running=false;}
+}
+function query(a,x){integer(x,0,1000000,'查詢值');let atLeast=0;for(let i=x;i<a.length;i++)atLeast+=a[i];return {exact:a[x]||0,atLeast};}
+return {LIMIT,integer,dice,conv,wound,roll,normalize,fnpThreshold,damageDist,binomial,single,estimate,potentialSingle,settle,step,calculate,check,query};
+}
+</script>
+<script id="app-source">'use strict';
+const $=id=>document.getElementById(id),engine=createEngine();
+for(const s of document.querySelectorAll('select[data-threshold]')){for(let i=2;i<=6;i++)s.add(new Option(i+'+',String(i),s.dataset.threshold===String(i),s.dataset.threshold===String(i)));if(s.dataset.seven)s.add(new Option('7+（無可用護甲）','7'));if(s.dataset.none)s.add(new Option('無可用豁免','99',s.dataset.threshold==='99',s.dataset.threshold==='99'));}
+for(const s of document.querySelectorAll('select[data-reroll]'))for(const[v,t]of [['none','不重擲'],['ones','重擲未修正1'],['failed','重擲失敗'],['noncrit','重擲所有非暴擊']])s.add(new Option(t,v));
+const definitions={R:'R：所有計畫攻擊的潛在傷害，不扣過量，也不受全滅上限限制。',L:'L：依傷害包分配的實際耐久損失，範圍0～NW。',K:'K：由模型剩餘耐久計算的擊殺數，範圍0～N。'};
+let result=null,metric='R',page=0,job=null,generation=0,lastMode='direct',rowNumber=0;
+function pct(p){if(p===0)return '0%';if(p===1)return '100%';if(p>1-1e-12)return '≈100%';if(p*100<0.000001)return (p*100).toExponential(6)+'%';return Number((p*100).toPrecision(10)).toString()+'%';}
+function number(v){return v!==0&&Math.abs(v)<1e-6?v.toExponential(6):Number(v.toPrecision(10)).toString();}
+function setStatus(message,kind=''){const s=$('status');s.textContent=message;s.className='status '+kind;}
+function clearErrors(){document.querySelectorAll('.inline-error').forEach(e=>e.remove());document.querySelectorAll('[aria-invalid]').forEach(e=>{e.removeAttribute('aria-invalid');const prev=e.dataset.oldDescription;if(prev)e.setAttribute('aria-describedby',prev);else e.removeAttribute('aria-describedby');});$('inputErrors').textContent='';}
+function fieldError(el,message){el.setAttribute('aria-invalid','true');if(!el.dataset.oldDescription)el.dataset.oldDescription=el.getAttribute('aria-describedby')||'';const err=document.createElement('span');err.className='field-error inline-error';err.id=(el.id||'row-'+(++rowNumber))+'-error';err.textContent=message;el.parentElement.append(err);el.setAttribute('aria-describedby',[el.dataset.oldDescription,err.id].filter(Boolean).join(' '));}
+function cancelWork(message){generation++;if(job){job.worker.terminate();URL.revokeObjectURL(job.url);clearTimeout(job.timer);job=null;} $('cancel').disabled=true;$('calculate').disabled=false;if(message)setStatus(message,result?'stale':'');}
+function changed(){cancelWork();$('results').dataset.stale=String(Boolean(result));setStatus(result?'設定已變更・下方為舊結果，待重新計算':'待計算・設定尚未計算',result?'stale':'');updateVisibility();showDerived();}
+function readRows(kind){return [...document.querySelectorAll('#mods-'+kind+' .dynamic-row')].map(row=>({name:row.querySelector('.modname').value,on:row.querySelector('.enabled').checked,sign:row.querySelector('.sign').value,amount:row.querySelector('.amount').value,ignore:row.querySelector('.ignore').checked}));}
+function config(){const c={};for(const key of ['phase','mode','attackMode','modelCount','attack','damage','N','W','hit','wound','save','inv','skill','S','T','Sv','AP','hcrit','wcrit','hr','wr','X','reduction'])c[key]=$(key).value;for(const key of ['psychic','sustained','lethal','dev','torrent','cover','ignoreCover','half'])c[key]=$(key).checked;c.useLethal=$('useLethal').value==='yes';c.mods={skill:readRows('skill'),hit:readRows('hit'),wound:readRows('wound')};c.fnp=[...$('fnpRows').children].map(r=>({condition:r.querySelector('.condition').value,threshold:r.querySelector('.threshold').value}));return c;}
+function updateVisibility(){const model=$('attackMode').value==='models';$('modelLabel').hidden=!model;$('modelCount').disabled=!model;$('attackLabel').className=model?'':'full';$('attackText').textContent=model?'每模型攻擊 A':'整組總攻擊 A';const stats=$('mode').value==='stats';$('directFields').hidden=stats;$('statsFields').hidden=!stats;$('skillText').textContent=$('phase').value==='ranged'?'BS 射擊能力值':'WS 近戰能力值';$('X').disabled=!$('sustained').checked;$('useLethal').disabled=!$('lethal').checked;$('ignoreCover').disabled=!$('psychic').checked||!$('cover').checked||$('phase').value!=='ranged';for(const e of document.querySelectorAll('.ignore'))e.disabled=!$('psychic').checked||e.closest('.dynamic-row').dataset.kind==='wound';const torrent=$('torrent').checked;$('torrentNote').hidden=!torrent;for(const id of ['hit','skill','hr','hcrit'])$(id).disabled=torrent;}
+function showDerived(){try{const z=engine.normalize(config());const save=z.save>6?'無可用豁免':z.save+'+';let text='';if(z.torrent)text='命中：Torrent自動成功。';else text='命中：基礎'+z.hit+'+ → BS／WS'+(z.skillDelta===0?'無變化':z.skillDelta<0?'改善'+(-z.skillDelta):'惡化'+z.skillDelta)+' → '+z.finalSkill+'+；命中擲骰合計'+z.hitRaw+' → '+z.hitMod+'。';text+=' 致傷：基礎'+z.wound+'+；擲骰合計'+z.woundRaw+' → '+z.woundMod+'。有效豁免：'+save+'。';if(z.blocks.length)text+='（仍有重擲或減傷規則缺口；本組合尚不能產生結果。）';$('derived').textContent=text;$('ruleBlocks').hidden=!z.blocks.length;$('ruleBlocks').textContent=z.blocks.join('\n');}catch(e){$('derived').textContent='請修正輸入後查看門檻推導。';$('ruleBlocks').hidden=true;}}
+for(const[kind,title]of [['skill','BS／WS 能力值'],['hit','命中擲骰'],['wound','致傷擲骰']]){const section=document.createElement('div');section.innerHTML='<div class="rowtitle"><h3></h3><button class="smallbtn" type="button">＋ 新增</button></div><div id="mods-'+kind+'"></div>';section.querySelector('h3').textContent=title;section.querySelector('button').setAttribute('aria-label','新增'+title+'修正');section.querySelector('button').onclick=()=>addModifier(kind);$('modifierLists').append(section);}
+function addModifier(kind){const list=$('mods-'+kind);if(list.children.length>=20){$('inputErrors').textContent='每類修正最多20列。';return;}const id=++rowNumber,r=document.createElement('div');r.className='dynamic-row';r.dataset.kind=kind;r.innerHTML='<div class="grid"><label class="full">來源名稱<input class="modname" maxlength="60" placeholder="例如：能力名稱"></label><label>方向<select class="sign"></select></label><label>幅度<input class="amount" type="number" min="1" max="20" value="1"></label></div><div class="rowcontrols"><label class="check"><input class="enabled" type="checkbox" checked>啟用</label><button class="smallbtn remove" type="button">移除</button></div><label class="check"><input class="ignore" type="checkbox">Psychic忽略此來源</label>';for(const[v,t]of(kind==='skill'?[[-1,'改善'],[1,'惡化']]:[[1,'加值（＋）'],[-1,'減值（−）']]))r.querySelector('.sign').add(new Option(t,String(v)));r.querySelector('.remove').onclick=()=>{r.remove();changed();};r.querySelectorAll('input,select').forEach((e,i)=>e.id='mod-'+id+'-'+i);list.append(r);changed();r.querySelector('input').focus();}
+$('addFnp').onclick=()=>{if($('fnpRows').children.length>=20){$('inputErrors').textContent='FNP最多20列。';return;}const id=++rowNumber,r=document.createElement('div');r.className='dynamic-row';r.innerHTML='<div class="grid"><label>門檻<select class="threshold"></select></label><label>條件<select class="condition"></select></label></div><button class="smallbtn remove" type="button" style="margin-top:10px">移除條件</button>';for(let i=2;i<=6;i++)r.querySelector('.threshold').add(new Option(i+'+',i,false,i===5));for(const[v,t]of [['all','所有傷害'],['mortal','致命傷害'],['psychic','靈能攻擊'],['both','靈能且致命']])r.querySelector('.condition').add(new Option(t,v));r.querySelectorAll('select').forEach((s,i)=>s.id='fnp-'+id+'-'+i);r.querySelector('.remove').onclick=()=>{r.remove();changed();};$('fnpRows').append(r);changed();r.querySelector('select').focus();};
+$('mode').addEventListener('change',()=>{if(lastMode==='stats'&&$('mode').value==='direct'){try{const skill=engine.integer($('skill').value,2,6,'BS／WS'),s=engine.integer($('S').value,1,100,'S'),t=engine.integer($('T').value,1,100,'T'),sv=engine.integer($('Sv').value,2,7,'Sv'),ap=engine.integer($('AP').value,-20,0,'AP');$('hit').value=skill;$('wound').value=engine.wound(s,t);$('save').value=sv-ap>6?99:sv-ap;}catch(e){$('mode').value='stats';$('inputErrors').textContent='模式轉換失敗：'+e.message;}}lastMode=$('mode').value;});
+$('settings').addEventListener('input',e=>{if(e.target.id==='mode')return;clearErrors();changed();});$('settings').addEventListener('change',()=>changed());
+function validate(){clearErrors();let first=null;function check(id,fn){try{fn();}catch(e){const el=$(id);fieldError(el,e.message);first||=el;}}
+const c=config();for(const[id,min,max]of [['N',1,30],['W',1,50],['reduction',0,50]])check(id,()=>engine.integer(c[id],min,max,id));if(c.attackMode==='models')check('modelCount',()=>engine.integer(c.modelCount,1,50,'攻擊模型數'));
+for(const[id,limit]of [['attack',300],['damage',50]])check(id,()=>{const d=engine.dice(c[id]),count=id==='attack'&&c.attackMode==='models'?Number(c.modelCount):1;if((d.length-1)*count>limit)throw Error((id==='attack'?'最大總攻擊':'單次傷害')+'不能超過'+limit);});if(c.sustained)check('X',()=>engine.integer(c.X,1,10,'連擊X'));
+if(c.mode==='stats'){check('S',()=>engine.integer(c.S,1,100,'S'));check('T',()=>engine.integer(c.T,1,100,'T'));check('AP',()=>engine.integer(c.AP,-20,0,'AP'));}
+for(const el of document.querySelectorAll('.amount')){try{engine.integer(el.value,1,20,'修正幅度');}catch(e){fieldError(el,e.message);first||=el;}}
+if(first){const d=first.closest('details');if(d)d.open=true;first.focus();$('inputErrors').textContent='請修正標示的輸入欄位。';return null;}
+try{const z=engine.normalize(c);if(z.blocks.length){$('ruleBlocks').hidden=false;$('ruleBlocks').textContent=z.blocks.join('\n');$('inputErrors').textContent='此組合仍有規則缺口，未進行計算。詳見上方條文清單。';return null;}return c;}catch(e){$('inputErrors').textContent=e.message;return null;}}
+function workerSource(){return '"use strict";const engine=('+createEngine.toString()+')();self.onmessage=e=>{const {id,config}=e.data;try{const result=engine.calculate(config,message=>self.postMessage({id,type:"progress",message}));self.postMessage({id,type:"result",result});}catch(error){self.postMessage({id,type:"error",message:error.message});}};';}
+$('settings').onsubmit=e=>{e.preventDefault();cancelWork();const c=validate();if(!c){setStatus('未計算・請查看左側錯誤或規則缺口','error');return;}if(!window.Worker||!window.Blob||!window.structuredClone){setStatus('此瀏覽器缺少Worker／Blob／structuredClone支援，無法計算。','error');return;}const id=++generation;let url,worker;try{url=URL.createObjectURL(new Blob([workerSource()],{type:'text/javascript'}));worker=new Worker(url);}catch(error){if(url)URL.revokeObjectURL(url);setStatus('無法建立Blob Worker：'+error.message,'error');return;}
+const timer=setTimeout(()=>{if(id!==generation)return;cancelWork();setStatus('工作超過20秒，已停止；請降低攻擊、連擊或傷害設定。未提供部分結果。','error');},20000);job={worker,url,timer};$('calculate').disabled=true;$('cancel').disabled=false;setStatus('計算中・正在建立完整離散分布');worker.onmessage=e=>{if(id!==generation||e.data.id!==id)return;const data=e.data;if(data.type==='progress'){setStatus('計算中・'+data.message);return;}cancelWork();if(data.type==='error'){setStatus(data.message,'error');return;}result=data.result;page=0;$('results').dataset.stale='false';$('empty').hidden=true;$('resultBody').hidden=false;for(const k of ['R','L','K'])$('mean'+k).textContent=number(result.means[k]);$('wipe').textContent=pct(result.wipe);setStatus('計算完成・理論機率／浮點運算');$('numerical').textContent='本次耗時 '+result.elapsed+' ms；機率總和 R='+result.sums.R.toPrecision(12)+'、L='+result.sums.L.toPrecision(12)+'、K='+result.sums.K.toPrecision(12)+'。未作強制正規化。FNP：普通 '+(result.fnp.normal===7?'無':result.fnp.normal+'+')+'／致命 '+(result.fnp.mortal===7?'無':result.fnp.mortal+'+')+'。';draw();query();};worker.onerror=e=>{if(id!==generation)return;cancelWork();setStatus('Worker執行失敗：'+e.message+'；未提供部分結果。','error');};worker.postMessage({id,config:c});};
+$('cancel').onclick=()=>{cancelWork('已取消・未更新結果');if(result)$('results').dataset.stale='true';};
+$('reset').onclick=()=>{cancelWork();$('settings').reset();$('fnpRows').replaceChildren();for(const k of ['skill','hit','wound'])$('mods-'+k).replaceChildren();result=null;metric='R';page=0;lastMode='direct';$('queryValue').value=5;$('queryType').value='R';$('resultBody').hidden=true;$('empty').hidden=false;for(const id of ['meanR','meanL','meanK','wipe'])$(id).textContent='—';$('results').dataset.stale='false';clearErrors();updateVisibility();showDerived();setStatus('待計算・已還原自訂示例');};
+function query(){if(!result)return;const key=$('queryType').value,raw=$('queryValue').value;try{const x=engine.integer(raw,0,1000000,'查詢值'),q=engine.query(result[key],x);$('queryError').textContent='';$('queryValue').removeAttribute('aria-invalid');$('exact').textContent=pct(q.exact);$('tail').textContent=pct(q.atLeast);$('exactLabel').textContent='P('+key+' = '+x+')';$('tailLabel').textContent='P('+key+' ≥ '+x+')';}catch(e){$('queryError').textContent=e.message;$('queryValue').setAttribute('aria-invalid','true');$('exact').textContent='—';$('tail').textContent='—';}}
+$('queryValue').oninput=query;$('queryType').onchange=query;
+function svg(tag,attrs,text){const e=document.createElementNS('http://www.w3.org/2000/svg',tag);for(const[k,v]of Object.entries(attrs||{}))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;return e;}
+function draw(){if(!result)return;document.querySelectorAll('[data-metric]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.metric===metric)));$('metricDefinition').textContent=definitions[metric];const a=result[metric],bin=Math.max(1,Math.ceil(a.length/120)),bars=[];for(let i=0;i<a.length;i+=bin){let p=0;for(let j=i;j<Math.min(i+bin,a.length);j++)p+=a[j];bars.push({lo:i,hi:Math.min(i+bin-1,a.length-1),p});}const max=Math.max(...bars.map(b=>b.p),.001),w=700,h=270,left=64,bottom=228,plotw=616,ploth=200;const s=svg('svg',{viewBox:'0 0 '+w+' '+h,role:'img','aria-label':metric+'機率分布；完整數值請參閱下方表格'});for(let i=0;i<=4;i++){const y=bottom-i*ploth/4;s.append(svg('line',{x1:left,y1:y,x2:680,y2:y,stroke:'#34434d'}));s.append(svg('text',{x:left-8,y:y+4,fill:'#b0c0ca','font-size':11,'text-anchor':'end'},pct(max*i/4)));}bars.forEach((b,i)=>{const bw=plotw/bars.length,bh=b.p/max*ploth,label=(b.lo===b.hi?String(b.lo):b.lo+'～'+b.hi),description=metric+' '+label+'：'+pct(b.p);const rect=svg('rect',{x:left+i*bw+1,y:bottom-bh,width:Math.max(.5,bw-2),height:bh,fill:metric==='K'?'#ffc473':'#66e4c3',tabindex:0,role:'img','aria-label':description});rect.append(svg('title',{},description));rect.addEventListener('focus',()=>{$('barReadout').textContent=description;});rect.addEventListener('pointerenter',()=>{$('barReadout').textContent=description;});s.append(rect);if(i%Math.max(1,Math.ceil(bars.length/8))===0||i===bars.length-1)s.append(svg('text',{x:left+(i+.5)*bw,y:249,fill:'#b0c0ca','font-size':11,'text-anchor':'middle'},label));});$('chart').replaceChildren(s);$('chartNote').textContent=bin>1?'圖表每'+bin+'個值合併一區間（機率相加）；表格與查詢保留全部單值。':'橫軸：'+metric+'的值；縱軸：恰好機率。零機率長條高度為0，可在表格讀取。';table();}
+function table(){if(!result)return;const a=result[metric],size=100,pages=Math.ceil(a.length/size);page=Math.min(page,pages-1);const tail=Array(a.length+1).fill(0);for(let i=a.length-1;i>=0;i--)tail[i]=tail[i+1]+a[i];const frag=document.createDocumentFragment();for(let i=page*size;i<Math.min((page+1)*size,a.length);i++){const tr=document.createElement('tr');for(const value of [String(i),pct(a[i]),pct(tail[i])]){const td=document.createElement('td');td.textContent=value;tr.append(td);}frag.append(tr);}$('distributionRows').replaceChildren(frag);$('tableCaption').textContent=metric+'完整分布（平均 '+number(result.means[metric])+'）';$('pageLabel').textContent='第'+(page+1)+'／'+pages+'頁 · 共'+a.length+'個值';$('prev').disabled=page===0;$('next').disabled=page===pages-1;}
+for(const b of document.querySelectorAll('[data-metric]'))b.onclick=()=>{metric=b.dataset.metric;page=0;draw();};$('prev').onclick=()=>{page--;table();};$('next').onclick=()=>{page++;table();};window.addEventListener('beforeunload',()=>cancelWork());
+updateVisibility();showDerived();
+</script>
+</body></html>
