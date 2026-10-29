@@ -745,12 +745,10 @@ const TRACK_FILES = [
 const TRACKS = TRACK_FILES.map(file => {
   const filename = file.split('/').pop();
   const isHopesAndDreams = /hope[s]? and dream[s]?/i.test(filename);
-  const title = /^(Swordwind|For the Craftworld|Khaines Wrath)\.mp3$/i.test(filename)
-    ? filename
-    : filename
-      .replace(/\.[^.]+$/, '')
-      .replace(/ _ Craftworld Eldar (Ambient|Combat) Music_320k$/i, '')
-      .replace(/_320k$/i, '');
+  const title = filename
+    .replace(/\.[^.]+$/, '')
+    .replace(/ _ Craftworld Eldar (Ambient|Combat) Music_320k$/i, '')
+    .replace(/_320k$/i, '');
   const artist = isHopesAndDreams
     ? 'Cyberbunk'
     : filename.includes('Ambient Music')
