@@ -4,7 +4,7 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PRISM // 戰術資料終端</title>
 <style>
-:root{color-scheme:dark;--ink:#adffc0;--bright:#7dff9e;--muted:#70a87e;--line:#284f32;--panel:#07110b;--black:#030805}*{box-sizing:border-box}body{margin:0;background:#020503;color:var(--ink);font:14px/1.6 'Courier New','Microsoft JhengHei',monospace}button,input,select{font:inherit}button,a,input,select{outline-offset:5px}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #d5ffe0}button,a{touch-action:manipulation}button{cursor:pointer}button,.button{color:var(--ink);background:#0c1d12;border:1px solid #416c4b;padding:10px 15px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:2px}button:hover,.button:hover{background:#193c24;border-color:var(--bright)}button.primary,.button.primary{background:var(--bright);color:#07110b;border-color:var(--bright);font-weight:bold}button:disabled{cursor:default;opacity:.5}input,select{min-width:0;color:var(--ink);background:#030805;border:1px solid var(--line);padding:10px;accent-color:var(--bright)}[hidden]{display:none!important}.shell{max-width:1920px;margin:auto;min-height:100dvh;border:1px solid #25442d}.topbar{display:flex;align-items:center;justify-content:space-between;padding:17px 24px;border-bottom:1px solid var(--line);gap:16px;background:#08120c}.brand{font-size:20px;letter-spacing:3px;font-weight:bold;color:var(--bright)}.brand small{display:block;font-size:10px;letter-spacing:2px;color:var(--muted);font-weight:normal}.dot{display:inline-block;width:7px;height:7px;background:var(--bright);border-radius:50%;box-shadow:0 0 8px #65e887;margin-right:8px}.topmeta{display:flex;align-items:center;gap:24px;color:var(--muted);font-size:11px}.workspace{display:grid;grid-template-columns:255px minmax(0,1fr);min-height:calc(100dvh - 87px)}aside{border-right:1px solid var(--line);background:#060e09;display:flex;flex-direction:column;padding:24px 16px;gap:22px}.section-label{font-size:10px;letter-spacing:2px;color:var(--muted);margin:0 0 12px}.nav{display:flex;flex-direction:column;gap:5px}.nav button{display:flex;text-align:left;justify-content:flex-start;border:1px solid transparent;padding:10px 9px;background:transparent;color:#8cb999;font-size:12px;gap:11px;line-height:1.55}.nav button span:first-child{font-size:10px;color:#5e8d6b;min-width:19px}.nav button[aria-current=page]{border-color:#487c51;background:#142d1b;color:#caffd8;box-shadow:inset 3px 0 var(--bright)}.nav button:hover{background:#102718}.navdivider{border-top:1px dashed var(--line);margin:9px 0}.sidebar-bottom{margin-top:auto;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:10px}.sidebar-bottom p{margin:3px 0}.main{min-width:0;padding:24px 32px 20px;display:flex;flex-direction:column;gap:18px}.breadcrumb{font-size:10px;letter-spacing:1.5px;color:var(--muted);display:flex;align-items:center;justify-content:space-between;gap:12px}.status-chip{border:1px solid var(--line);padding:3px 8px;white-space:nowrap}.screen{position:relative;border:1px solid #36593e;background:radial-gradient(ellipse at 50% 15%,#122c1b 0%,#07110b 65%);overflow:hidden;min-height:520px;flex:1;box-shadow:inset 0 0 50px #0007}.screen:after{content:'';pointer-events:none;position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0px,transparent 3px,#0002 3px,#0002 4px);opacity:.3;z-index:1}.screen.clean:after{display:none}.screen-head{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:10px 18px;color:var(--muted);font-size:10px;letter-spacing:1px}.home-body{padding:42px clamp(22px,5vw,80px) 30px}.eyebrow{font-size:11px;letter-spacing:4px;color:#7da788}.hero{display:grid;grid-template-columns:minmax(0,1fr) 150px;align-items:center;gap:20px}.hero h1{font-size:clamp(30px,3.5vw,54px);line-height:1.2;margin:18px 0;letter-spacing:3px;color:#baffca;text-shadow:0 0 22px #65f28b33}.hero p{color:#90b79a;font-size:13px;max-width:550px;margin:0 0 26px;line-height:1.9}.seal{width:145px;height:170px;opacity:.7;filter:drop-shadow(0 0 10px #4db57033)}.actions{display:flex;gap:12px;flex-wrap:wrap}.action-secondary{background:transparent}.readouts{margin-top:34px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr)}.readout{padding:17px 14px;border-right:1px solid var(--line)}.readout:first-child{padding-left:0}.readout:last-child{border:0}.readout small{font-size:9px;color:var(--muted);letter-spacing:1.5px;display:block}.readout strong{font-size:18px;font-weight:normal;display:block;margin-top:3px}.terminal-log{margin-top:24px;font-size:11px;color:#7eac8b;line-height:2}.terminal-log strong{color:var(--bright);font-weight:normal}.terminal-log p{margin:0}.cursor{display:inline-block;width:8px;height:13px;background:#8affab;vertical-align:middle}.contentview{height:100%;min-height:700px;display:flex;flex-direction:column;background:#030805}.viewbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);gap:10px;flex-wrap:wrap}.viewbar strong{font-size:12px}.viewbar a{font-size:11px}.notice{font-size:12px;color:#a8c9ae;padding:12px 16px;border-bottom:1px solid var(--line);margin:0}.contentview iframe{border:0;background:#07110b;width:100%;flex:1;min-height:660px}.player{border:1px solid var(--line);background:#08120c;padding:17px 20px;display:grid;grid-template-columns:minmax(200px,1fr) auto;gap:14px 24px;align-items:center}.track-label{font-size:9px;color:var(--muted);letter-spacing:2px}.track-name{font-size:13px;margin:4px 0;overflow-wrap:anywhere}.player-state{font-size:10px;color:#81aa8b;min-height:16px}.transport{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.transport button{min-height:40px;padding:7px 12px}.timeline{display:flex;align-items:center;gap:10px;grid-column:1/-1;font-size:10px;color:var(--muted)}.timeline input{flex:1;width:100%;padding:0;height:8px}.volume{display:flex;align-items:center;gap:7px;font-size:10px;color:var(--muted)}.volume input{width:65px;padding:0}.footer{display:flex;justify-content:space-between;font-size:9px;letter-spacing:1px;color:#679373;gap:12px}.menutoggle{display:none}dialog{color:var(--ink);background:#08120c;border:1px solid #659971;max-width:560px;width:calc(100% - 32px);max-height:85dvh;padding:24px;box-shadow:0 0 70px #000}dialog::backdrop{background:#000b}dialog h2{font-size:20px;margin:0}dialog header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:20px}dialog p{color:#92b59c;font-size:12px}dialog .song{display:block;text-align:left;width:100%;margin:8px 0;font-size:13px;padding:14px}.song small{display:block;font-size:10px;color:#8db49a}.song[aria-pressed=true]{border-color:var(--bright);background:#193620}dialog label{display:block;margin:16px 0 5px;font-size:12px}dialog input{width:100%}.form-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}.skip{position:absolute;top:-80px;left:10px;z-index:9}.skip:focus{top:10px}.linkerror{color:#ffc98f}#linkStatus{min-height:18px}
+:root{color-scheme:dark;--ink:#adffc0;--bright:#7dff9e;--muted:#70a87e;--line:#284f32;--panel:#07110b;--black:#030805}*{box-sizing:border-box}body{margin:0;background:#020503;color:var(--ink);font:14px/1.6 'Courier New','Microsoft JhengHei',monospace}button,input,select{font:inherit}button,a,input,select{outline-offset:5px}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #d5ffe0}button,a{touch-action:manipulation}button{cursor:pointer}button,.button{color:var(--ink);background:#0c1d12;border:1px solid #416c4b;padding:10px 15px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:2px}button:hover,.button:hover{background:#193c24;border-color:var(--bright)}button.primary,.button.primary{background:var(--bright);color:#07110b;border-color:var(--bright);font-weight:bold}button:disabled{cursor:default;opacity:.5}input,select{min-width:0;color:var(--ink);background:#030805;border:1px solid var(--line);padding:10px;accent-color:var(--bright)}[hidden]{display:none!important}.shell{max-width:1920px;margin:auto;min-height:100dvh;border:1px solid #25442d}.topbar{display:flex;align-items:center;justify-content:space-between;padding:17px 24px;border-bottom:1px solid var(--line);gap:16px;background:#08120c}.brand{font-size:20px;letter-spacing:3px;font-weight:bold;color:var(--bright)}.brand small{display:block;font-size:10px;letter-spacing:2px;color:var(--muted);font-weight:normal}.dot{display:inline-block;width:7px;height:7px;background:var(--bright);border-radius:50%;box-shadow:0 0 8px #65e887;margin-right:8px}.topmeta{display:flex;align-items:center;gap:24px;color:var(--muted);font-size:11px}.workspace{display:grid;grid-template-columns:255px minmax(0,1fr);min-height:calc(100dvh - 87px)}aside{border-right:1px solid var(--line);background:#060e09;display:flex;flex-direction:column;padding:24px 16px;gap:22px}.section-label{font-size:10px;letter-spacing:2px;color:var(--muted);margin:0 0 12px}.nav{display:flex;flex-direction:column;gap:5px}.nav button{display:flex;text-align:left;justify-content:flex-start;border:1px solid transparent;padding:10px 9px;background:transparent;color:#8cb999;font-size:12px;gap:11px;line-height:1.55}.nav button span:first-child{font-size:10px;color:#5e8d6b;min-width:19px}.nav button[aria-current=page]{border-color:#487c51;background:#142d1b;color:#caffd8;box-shadow:inset 3px 0 var(--bright)}.nav button:hover{background:#102718}.navdivider{border-top:1px dashed var(--line);margin:9px 0}.sidebar-bottom{margin-top:auto;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:10px}.sidebar-bottom p{margin:3px 0}.main{min-width:0;padding:24px 32px 20px;display:flex;flex-direction:column;gap:18px}.breadcrumb{font-size:10px;letter-spacing:1.5px;color:var(--muted);display:flex;align-items:center;justify-content:space-between;gap:12px}.status-chip{border:1px solid var(--line);padding:3px 8px;white-space:nowrap}.screen{position:relative;border:1px solid #36593e;background:radial-gradient(ellipse at 50% 15%,#122c1b 0%,#07110b 65%);overflow:hidden;min-height:520px;flex:1;box-shadow:inset 0 0 50px #0007}.screen:after{content:'';pointer-events:none;position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0px,transparent 3px,#0002 3px,#0002 4px);opacity:.3;z-index:1}.screen.clean:after{display:none}.screen-head{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:10px 18px;color:var(--muted);font-size:10px;letter-spacing:1px}.home-body{padding:42px clamp(22px,5vw,80px) 30px}.eyebrow{font-size:11px;letter-spacing:4px;color:#7da788}.hero{display:grid;grid-template-columns:minmax(0,1fr) 150px;align-items:center;gap:20px}.hero h1{font-size:clamp(30px,3.5vw,54px);line-height:1.2;margin:18px 0;letter-spacing:3px;color:#baffca;text-shadow:0 0 22px #65f28b33}.hero p{color:#90b79a;font-size:13px;max-width:550px;margin:0 0 26px;line-height:1.9}.seal{width:145px;height:170px;opacity:.7;filter:drop-shadow(0 0 10px #4db57033)}.actions{display:flex;gap:12px;flex-wrap:wrap}.action-secondary{background:transparent}.readouts{margin-top:34px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr)}.readout{padding:17px 14px;border-right:1px solid var(--line)}.readout:first-child{padding-left:0}.readout:last-child{border:0}.readout small{font-size:9px;color:var(--muted);letter-spacing:1.5px;display:block}.readout strong{font-size:18px;font-weight:normal;display:block;margin-top:3px}.terminal-log{margin-top:24px;font-size:11px;color:#7eac8b;line-height:2}.terminal-log strong{color:var(--bright);font-weight:normal}.terminal-log p{margin:0}.cursor{display:inline-block;width:8px;height:13px;background:#8affab;vertical-align:middle}.contentview{height:100%;min-height:700px;display:flex;flex-direction:column;background:#030805}.viewbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);gap:10px;flex-wrap:wrap}.viewbar strong{font-size:12px}.viewbar a{font-size:11px}.notice{font-size:12px;color:#a8c9ae;padding:12px 16px;border-bottom:1px solid var(--line);margin:0}.contentview iframe{border:0;background:#07110b;width:100%;flex:1;min-height:660px}.player{border:1px solid var(--line);background:#08120c;padding:17px 20px;display:grid;grid-template-columns:minmax(200px,1fr) auto;gap:14px 24px;align-items:center}.track-label{font-size:9px;color:var(--muted);letter-spacing:2px}.track-name{font-size:13px;margin:4px 0;overflow-wrap:anywhere}.player-state{font-size:10px;color:#81aa8b;min-height:16px}.transport{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.transport button{min-height:40px;padding:7px 12px}.timeline{display:flex;align-items:center;gap:10px;grid-column:1/-1;font-size:10px;color:var(--muted)}.timeline input{flex:1;width:100%;padding:0;height:8px}.volume{display:flex;align-items:center;gap:7px;font-size:10px;color:var(--muted)}.volume input{width:65px;padding:0}.footer{display:flex;justify-content:space-between;font-size:9px;letter-spacing:1px;color:#679373;gap:12px}.menutoggle{display:none}dialog{color:var(--ink);background:#08120c;border:1px solid #659971;max-width:560px;width:calc(100% - 32px);max-height:85dvh;padding:24px;box-shadow:0 0 70px #000}dialog::backdrop{background:#000b}dialog h2{font-size:20px;margin:0}dialog header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:20px}dialog p{color:#92b59c;font-size:12px}dialog .song{display:block;text-align:left;width:100%;margin:8px 0;font-size:13px;padding:14px}.song small{display:block;font-size:10px;color:#8db49a}.song[aria-pressed=true]{border-color:var(--bright);background:#193620}.playlist-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.playlist-tabs button[aria-pressed=true]{border-color:var(--bright);background:#30203d;color:#fff9e9}dialog label{display:block;margin:16px 0 5px;font-size:12px}dialog input{width:100%}.form-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}.skip{position:absolute;top:-80px;left:10px;z-index:9}.skip:focus{top:10px}.linkerror{color:#ffc98f}#linkStatus{min-height:18px}
 @media(min-width:1600px){.main{padding:30px 50px}.home-body{padding-top:65px}}@media(max-width:1000px){.workspace{grid-template-columns:220px minmax(0,1fr)}.main{padding:20px}.hero{grid-template-columns:1fr}.seal{display:none}.player{grid-template-columns:1fr}.topmeta time{display:none}}@media(max-width:700px){.topbar{padding:13px 16px;flex-wrap:wrap}.brand{font-size:17px}.topmeta{gap:12px}.topmeta>span{display:none}.menutoggle{display:inline-flex;font-size:12px;padding:8px}.workspace{display:block;min-height:0}aside{display:none;border-right:0;border-bottom:1px solid var(--line);max-height:65dvh;overflow:auto}aside.open{display:flex}.sidebar-bottom{display:none}.main{padding:16px 12px}.home-body{padding:28px 20px}.hero h1{font-size:34px}.hero p{font-size:12px}.screen{min-height:520px}.readouts{grid-template-columns:1fr}.readout,.readout:first-child{padding:10px 0;border-right:0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.readout strong{font-size:15px;margin:0}.terminal-log{font-size:10px}.player{padding:15px}.transport button{padding:8px 10px}.footer{font-size:8px;flex-wrap:wrap}.breadcrumb{font-size:9px}.contentview iframe{min-height:75dvh}.contentview{min-height:75dvh}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 </style>
 <style>
@@ -639,6 +639,12 @@ dialog p {
   background: #30203d;
 }
 
+.transport button[aria-pressed="true"] {
+  border-color: var(--bright);
+  background: #e4c57f;
+  color: #21172b;
+}
+
 .linkerror {
   color: #f0c894;
 }
@@ -674,10 +680,10 @@ dialog p {
 </div></div>
 <div id="contentview" class="contentview" hidden><div class="viewbar"><strong id="viewTitle"></strong><a id="openSeparate" class="button" target="_blank" rel="noopener noreferrer">另開分頁 ↗</a></div><p class="notice" id="frameNotice" hidden></p><iframe id="contentFrame" name="right" title="選取的工作頁面" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
 </section>
-<section class="player" aria-label="背景音樂播放器"><div><div class="track-label">02 / VOX CHANNEL · 音樂頻道</div><div id="trackName" class="track-name"></div><div id="playerState" class="player-state" role="status">等待播放指令</div></div><div class="transport"><button id="prev" aria-label="上一首">◀</button><button id="play" class="primary">播放</button><button id="next" aria-label="下一首">▶</button><button id="chooseMusic">曲目清單</button><label class="volume">音量 <input id="volume" type="range" min="0" max="1" step="0.01" value="0.35" aria-label="音量"></label></div><div class="timeline"><span id="elapsed">00:00</span><input id="seek" type="range" min="0" max="100" step="0.1" value="0" disabled aria-label="播放進度"><span id="duration">--:--</span></div><audio id="audio" preload="metadata"></audio></section>
+<section class="player" aria-label="背景音樂播放器"><div><div class="track-label">02 / VOX CHANNEL · 音樂頻道</div><div id="trackName" class="track-name"></div><div id="playerState" class="player-state" role="status">等待播放指令</div></div><div class="transport"><button id="prev" aria-label="上一首">◀</button><button id="play" class="primary">播放</button><button id="next" aria-label="下一首">▶</button><button id="repeat" aria-pressed="false" aria-label="單曲循環：關閉">↻ 單曲循環</button><button id="playlistRepeat" aria-pressed="true" aria-label="清單循環：開啟">↻ 清單循環</button><button id="chooseMusic">曲目清單</button><label class="volume">音量 <input id="volume" type="range" min="0" max="1" step="0.01" value="0.35" aria-label="音量"></label></div><div class="timeline"><span id="elapsed">00:00</span><input id="seek" type="range" min="0" max="100" step="0.1" value="0" disabled aria-label="播放進度"><span id="duration">--:--</span></div><audio id="audio" preload="metadata"></audio></section>
 <footer class="footer"><span>+++ THE MACHINE SPIRIT AWAITS +++</span><span>PRISM / 非官方個人作品</span></footer>
 </main></div></div>
-<dialog id="musicDialog" aria-labelledby="musicTitle"><header><h2 id="musicTitle">音樂資料庫</h2><button data-close="musicDialog" aria-label="關閉音樂清單">✕</button></header><p>選擇曲目即播放；播放完畢會自動切換至下一首。</p><div id="songList"></div></dialog>
+<dialog id="musicDialog" aria-labelledby="musicTitle"><header><h2 id="musicTitle">音樂資料庫</h2><button data-close="musicDialog" aria-label="關閉音樂清單">✕</button></header><p>選擇清單分類，再點選曲目播放。曲目依檔名中的「Ambient Music」分類。</p><div id="playlistTabs" class="playlist-tabs" role="group" aria-label="音樂清單分類"></div><div id="songList"></div></dialog>
 <dialog id="linkDialog" aria-labelledby="linkTitle"><header><h2 id="linkTitle">新增工作網址</h2><button data-close="linkDialog" aria-label="關閉新增網址">✕</button></header><form id="linkForm"><label for="linkName">工作名稱</label><input id="linkName" required maxlength="60" placeholder="例如：課程平台"><label for="linkUrl">完整網址（http 或 https）</label><input id="linkUrl" type="url" required placeholder="https://example.com"><p>新增項目只保留至重新整理。永久清單可修改 index.html 的 WORK_LINKS。部分網站禁止嵌入，可使用「另開分頁」。</p><p id="linkStatus" class="linkerror" role="alert"></p><div class="form-actions"><button type="button" data-close="linkDialog">取消</button><button class="primary" type="submit">加入並開啟</button></div></form></dialog>
 <script>
 'use strict';
@@ -691,32 +697,86 @@ const WORK_LINKS=[
   { name: '關於 Daniel', url: 'f0.html', code: '02' },
   { name: '貪吃蛇遊戲', url: SCHOOL_BASE + 'f5.html' },
 ];
-const TRACKS = [
-  {
-    title: 'Swordwind · Eldar Theme',
-    artist: 'Dawn of War III Soundtrack',
-    file: 'music/swordwind.mp3',
-  },
-  {
-    title: 'For The Craftworld',
-    artist: 'Craftworld Eldar Combat Music',
-    file: 'music/for-the-craftworld.mp3',
-  },
-  {
-    title: "Khaine’s Wrath",
-    artist: 'Craftworld Eldar Combat Music',
-    file: 'music/khaines-wrath.mp3',
-  },
-  {
-    title: 'Hopes and Dreams',
-    artist: '1-01 · 原始音樂檔',
-    file: 'music/1-01%20Hopes%20and%20Dreams.flac',
-  },
+const TRACK_FILES = [
+  'music/swordwind.mp3',
+  'music/for-the-craftworld.mp3',
+  'music/khaines-wrath.mp3',
+  'music/The Elder Races _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/Lament of the Asuryani - In the Garden of Ghosts_ Hammer & Bolter Warhammer 40k._320k.mp3',
+  'music/Fallen Sailor _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/The Asur March _ Craftworld Eldar Combat Music_320k.mp3',
+  'music/The Grace of Isha _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/Blood Lust _ Craftworld Eldar Combat Music_320k.mp3',
+  'music/The Great Vortex _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/Caledor s Fury _ Craftworld Eldar Combat Music_320k.mp3',
+  'music/High Loremaster _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/Dragonflame _ Craftworld Eldar Combat Music_320k.mp3',
+  'music/In Too Deep _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/From Abysses Below and Beyond _ Craftworld Eldar Combat Music_320k.mp3',
+  'music/Into Eternity _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/Mind In Motion _ Craftworld Eldar Combat Music_320k.mp3',
+  'music/Isha s Blessing _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/Murderous Prowess _ Craftworld Eldar Combat Music_320k.mp3',
+  'music/Lothlorien _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/Reanimation _ Craftworld Eldar Combat Music_320k.mp3',
+  'music/The Lullaby of Praxis _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/The Sundering _ Craftworld Eldar Combat Music_320k.mp3',
+  'music/Northstar _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/To Battle Brothers _ Craftworld Eldar Combat Music_320k.mp3',
+  'music/Ocean Lullaby _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/Valor Of Ages _ Craftworld Eldar Combat Music_320k.mp3',
+  'music/On the Motorway _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/Widowmaker _ Craftworld Eldar Combat Music_320k.mp3',
+  'music/The Seafarer _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/Sawu Long Ambience _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/Shrine Of Asuryan _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/A Giant s Prayer _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/The Ten Kingdoms _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/Always (Hebridean Mix) _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/Solitude _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/Typhon Arena _ Craftworld Eldar Ambient Music_320k.mp3',
+  'music/Craftworld Aeldari Theme _ Gladius - Relics of War Soundtrack_320k.mp3',
+  'music/Legio Symphonica - The Unescapable Truth  _ Warhammer 40K Music_320k.mp3',
+  'music/Craftworld Aeldari Background Music _ Gladius - Relics of War Soundtrack_320k.mp3',
+  'music/Warhammer 40,000_ Eternal Crusade Soundtrack _ Eldars - Theme_320k.mp3',
+  'music/Wraithlord - an Eldar _ Aeldari metal song (Warhammer 40k)_320k.mp3',
+  '1-01 Hopes and Dreams.flac',
+];
+const TRACKS = TRACK_FILES.map(file => {
+  const filename = file.split('/').pop();
+  const isHopesAndDreams = /hope[s]? and dream[s]?/i.test(filename);
+  const title = filename
+    .replace(/\.[^.]+$/, '')
+    .replace(/ _ Craftworld Eldar (Ambient|Combat) Music_320k$/i, '')
+    .replace(/_320k$/i, '');
+  const artist = isHopesAndDreams
+    ? 'Cyberbunk'
+    : filename.includes('Ambient Music')
+      ? '氛圍音樂'
+      : '戰鬥音樂';
+
+  return {
+    title: isHopesAndDreams ? 'Hopes and Dreams' : title,
+    artist,
+    file,
+    playlist: isHopesAndDreams
+      ? 'cyberbunk'
+      : filename.includes('Ambient Music')
+        ? 'ambient'
+        : 'combat',
+  };
+});
+const PLAYLISTS = [
+  { id: 'ambient', name: '氛圍音樂' },
+  { id: 'combat', name: '戰鬥音樂' },
+  { id: 'cyberbunk', name: 'Cyberbunk' },
 ];
 const $ = id => document.getElementById(id);
 let currentPage = 0;
+let currentPlaylist = 'combat';
 let currentTrack = 0;
 let playRequest = 0;
+let playlistLoop = true;
 
 function renderNav() {
   const nav = $('navigation');
@@ -852,11 +912,41 @@ for (const dialog of document.querySelectorAll('dialog')) {
 
 const audio = $('audio');
 audio.volume = 0.35;
+audio.loop = false;
+
+function getPlaylistTracks() {
+  return TRACKS.filter(track => track.playlist === currentPlaylist);
+}
+
+function renderPlaylists() {
+  const tabs = $('playlistTabs');
+  tabs.replaceChildren();
+
+  PLAYLISTS.forEach(playlist => {
+    const button = document.createElement('button');
+    const count = TRACKS.filter(track => track.playlist === playlist.id).length;
+    button.type = 'button';
+    button.setAttribute('aria-pressed', String(playlist.id === currentPlaylist));
+    button.textContent = playlist.name + ' (' + count + ')';
+    button.onclick = () => {
+      if (playlist.id === currentPlaylist) {
+        return;
+      }
+
+      const wasPlaying = !audio.paused;
+      currentPlaylist = playlist.id;
+      selectTrack(0, wasPlaying);
+      renderPlaylists();
+    };
+    tabs.append(button);
+  });
+}
 
 function updateSongs() {
   $('songList').replaceChildren();
+  const playlistTracks = getPlaylistTracks();
 
-  TRACKS.forEach((track, i) => {
+  playlistTracks.forEach((track, i) => {
     const button = document.createElement('button');
     button.className = 'song';
     button.setAttribute('aria-pressed', String(i === currentTrack));
@@ -876,19 +966,21 @@ function updateSongs() {
 }
 
 function selectTrack(i, start) {
+  const playlistTracks = getPlaylistTracks();
   playRequest++;
   audio.pause();
-  currentTrack = (i + TRACKS.length) % TRACKS.length;
-  audio.src = TRACKS[currentTrack].file;
+  currentTrack = (i + playlistTracks.length) % playlistTracks.length;
+  const track = playlistTracks[currentTrack];
+  audio.src = track.file;
   audio.load();
 
   $('trackName').textContent =
-    String(currentTrack + 1).padStart(2, '0') + ' / ' + TRACKS[currentTrack].title;
+    String(currentTrack + 1).padStart(2, '0') + ' / ' + track.title;
   $('seek').value = 0;
   $('seek').disabled = true;
   $('elapsed').textContent = '00:00';
   $('duration').textContent = '--:--';
-  $('playerState').textContent = '已選取 · ' + TRACKS[currentTrack].artist;
+  $('playerState').textContent = '已選取 · ' + track.artist;
 
   updateSongs();
   if (start) {
@@ -924,6 +1016,23 @@ $('play').onclick = () => {
 
 $('prev').onclick = () => selectTrack(currentTrack - 1, true);
 $('next').onclick = () => selectTrack(currentTrack + 1, true);
+$('repeat').onclick = () => {
+  audio.loop = !audio.loop;
+  $('repeat').setAttribute('aria-pressed', String(audio.loop));
+  $('repeat').setAttribute(
+    'aria-label',
+    audio.loop ? '單曲循環：開啟' : '單曲循環：關閉'
+  );
+};
+
+$('playlistRepeat').onclick = () => {
+  playlistLoop = !playlistLoop;
+  $('playlistRepeat').setAttribute('aria-pressed', String(playlistLoop));
+  $('playlistRepeat').setAttribute(
+    'aria-label',
+    playlistLoop ? '清單循環：開啟' : '清單循環：關閉'
+  );
+};
 
 for (const id of ['chooseMusic', 'homeMusic']) {
   $(id).onclick = () => $('musicDialog').showModal();
@@ -941,7 +1050,7 @@ const timeText = value => Number.isFinite(value)
 
 audio.addEventListener('play', () => {
   $('play').textContent = '暫停';
-  $('playerState').textContent = '播放中 · ' + TRACKS[currentTrack].artist;
+  $('playerState').textContent = '播放中 · ' + getPlaylistTracks()[currentTrack].artist;
 });
 
 audio.addEventListener('pause', () => {
@@ -972,7 +1081,16 @@ $('seek').oninput = event => {
   }
 };
 
-audio.addEventListener('ended', () => selectTrack(currentTrack + 1, true));
+audio.addEventListener('ended', () => {
+  const playlistTracks = getPlaylistTracks();
+  if (currentTrack < playlistTracks.length - 1) {
+    selectTrack(currentTrack + 1, true);
+  } else if (playlistLoop) {
+    selectTrack(0, true);
+  } else {
+    $('playerState').textContent = '清單播放完畢';
+  }
+});
 
 function clock() {
   $('clock').textContent =
@@ -987,6 +1105,7 @@ clock();
 setInterval(clock, 1000);
 
 renderNav();
+renderPlaylists();
 selectTrack(0, false);
 </script>
 </body></html>
