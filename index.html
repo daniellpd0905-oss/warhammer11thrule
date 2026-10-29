@@ -740,27 +740,75 @@ const TRACK_FILES = [
   'music/Craftworld Aeldari Background Music _ Gladius - Relics of War Soundtrack_320k.mp3',
   'music/Warhammer 40,000_ Eternal Crusade Soundtrack _ Eldars - Theme_320k.mp3',
   'music/Wraithlord - an Eldar _ Aeldari metal song (Warhammer 40k)_320k.mp3',
-  '1-01 Hopes and Dreams.flac',
 ];
-const TRACKS = TRACK_FILES.map(file => {
+const CYBERPUNK_TRACK_FILES = [
+  'music/_Shine Spark  (Official Version __ VA-11 HALL-A) (Adriana Figueroa & Garoad)_320k.mp3',
+  'music/A Gaze That Invited Disaster_320k.mp3',
+  'music/A Neon Glow Lights the Way_320k.mp3',
+  'music/A Star Pierces the Darkness_320k.mp3',
+  'music/A. Rene_320k.mp3',
+  'music/All Systems, Go!_320k.mp3',
+  'music/Believe in Me Who Believes in You_320k.mp3',
+  'music/Better Luck Next Time_320k.mp3',
+  'music/Calicomp 1.1_ Shutdown_320k.mp3',
+  'music/Calicomp 1.1_ Startup_320k.mp3',
+  'music/Commencing Simulation_320k.mp3',
+  'music/Dawn Approaches_320k.mp3',
+  'music/Digital Drive_320k.mp3',
+  'music/Drive Me Wild_320k.mp3',
+  'music/Every Day Is Night_320k.mp3',
+  'music/Everything Will Be Okay_320k.mp3',
+  'music/Final Result_320k.mp3',
+  'music/Friendly Conversation_320k.mp3',
+  'music/Go! Go! Steaming-Chan!_320k.mp3',
+  'music/Good for Health, Bad for Education_320k.mp3',
+  'music/Hopes and Dreams_320k.mp3',
+  'music/JC Elton s_320k.mp3',
+  'music/Last Call_320k.mp3',
+  'music/March of the White Knights_320k.mp3',
+  'music/Neo Avatar_320k.mp3',
+  'music/Nighttime Maneuvers_320k.mp3',
+  'music/Reminiscence_320k.mp3',
+  'music/Safe Haven_320k.mp3',
+  'music/Snowfall_320k.mp3',
+  'music/Synthestitch_320k.mp3',
+  'music/The Answer Lies Within_320k.mp3',
+  'music/Those Who Dwell in Shadows_320k.mp3',
+  'music/Through the Storm, We Will Find a Way_320k.mp3',
+  'music/Transition I_320k.mp3',
+  'music/Transition II_320k.mp3',
+  'music/Troubling News_320k.mp3',
+  'music/Umemoto_320k.mp3',
+  'music/Until We Meet Again_320k.mp3',
+  'music/VA-11 HALL-A_ Your Love is a Drug! Vocal Cover with Original Lyrics by Sabivee_320k.mp3',
+  'music/Welcome to VA-11 Hall-A_320k.mp3',
+  'music/Where Do I Go from Here _320k.mp3',
+  'music/Who Was I _320k.mp3',
+  'music/Will You Remember Me _320k.mp3',
+  'music/With Renewed Hope, We Continue Forward_320k.mp3',
+  'music/You ve Got Me_320k.mp3',
+  'music/Your Love Is a Drug_320k.mp3',
+];
+const TRACKS = [...TRACK_FILES, ...CYBERPUNK_TRACK_FILES].map(file => {
   const filename = file.split('/').pop();
-  const isHopesAndDreams = /hope[s]? and dream[s]?/i.test(filename);
+  const isCyberpunk = CYBERPUNK_TRACK_FILES.includes(file);
   const title = filename
     .replace(/\.[^.]+$/, '')
     .replace(/ _ Craftworld Eldar (Ambient|Combat) Music_320k$/i, '')
-    .replace(/_320k$/i, '');
-  const artist = isHopesAndDreams
-    ? 'Cyberbunk'
+    .replace(/_320k$/i, '')
+    .trim();
+  const artist = isCyberpunk
+    ? 'Cyberpunk'
     : filename.includes('Ambient Music')
       ? '氛圍音樂'
       : '戰鬥音樂';
 
   return {
-    title: isHopesAndDreams ? 'Hopes and Dreams' : title,
+    title,
     artist,
     file,
-    playlist: isHopesAndDreams
-      ? 'cyberbunk'
+    playlist: isCyberpunk
+      ? 'cyberpunk'
       : filename.includes('Ambient Music')
         ? 'ambient'
         : 'combat',
@@ -769,7 +817,7 @@ const TRACKS = TRACK_FILES.map(file => {
 const PLAYLISTS = [
   { id: 'ambient', name: '氛圍音樂' },
   { id: 'combat', name: '戰鬥音樂' },
-  { id: 'cyberbunk', name: 'Cyberbunk' },
+  { id: 'cyberpunk', name: 'Cyberpunk' },
 ];
 const $ = id => document.getElementById(id);
 let currentPage = 0;
