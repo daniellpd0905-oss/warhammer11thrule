@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-16 Asia/Taipei",
+  "checks": [
+    "50 models each D6 normalize successfully; helper calls do not inherit calculation timers",
+    "Extreme tail underflow detected and rejected without a partial result",
+    "Actual cancelWork function terminates worker, revokes Blob URL, clears timer, increments generation and updates controls (mock platform objects)",
+    "Actual message-handler generation guard ignores stale result and progress before touching UI",
+    "Exact inline worker source executes in Node worker bridge and returns request ID and correct reference distribution (not browser Blob validation)",
+    "Node worker terminated before completion yields no result"
+  ],
+  "limits": [
+    {
+      "case": "A80 Sustained2 Devastating D3 N30 W5",
+      "ms": 4178,
+      "work": 8081022,
+      "estimate": {
+        "ops": 8387395,
+        "states": 29161,
+        "maxPackets": 240,
+        "maxR": 720
+      },
+      "sums": {
+        "R": 0.9999999999999946,
+        "L": 0.9999999999999941,
+        "K": 0.9999999999999942
+      }
+    }
+  ]
+}

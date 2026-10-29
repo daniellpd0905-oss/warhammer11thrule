@@ -1,0 +1,266 @@
+{
+  "passed": 29,
+  "results": [
+    {
+      "name": "2D6 exact convolution and independent per-model attacks",
+      "ms": 2.56
+    },
+    {
+      "name": "Candidate reroll mathematics (NOT official-rule certification)",
+      "ms": 0.12
+    },
+    {
+      "name": "Modifier sum +2 -1 = +1, separate skill, enabled calculation",
+      "ms": 4.85
+    },
+    {
+      "name": "Candidate damage transform D3 half and minimum1; public gate",
+      "ms": 1.17
+    },
+    {
+      "name": "D2 FNP4+ binomial per wound",
+      "ms": 0.06
+    },
+    {
+      "name": "Core fixture two D3 packets versus 3xW2: R6 L4 K2",
+      "ms": 0.08
+    },
+    {
+      "name": "A10 reference case complete distributions and exact wipe",
+      "ms": 2.35
+    },
+    {
+      "name": "Equivalent input modes full-distribution equality",
+      "ms": 0.94
+    },
+    {
+      "name": "Independent exhaustive enumeration: Torrent",
+      "ms": 1.4
+    },
+    {
+      "name": "Independent exhaustive enumeration: Sustained+Lethal",
+      "ms": 35.56
+    },
+    {
+      "name": "Independent exhaustive enumeration: Lethal+Devastating auto",
+      "ms": 1.44
+    },
+    {
+      "name": "Independent exhaustive enumeration: Lethal+Devastating decline",
+      "ms": 2.12
+    },
+    {
+      "name": "Independent exhaustive enumeration: Mixed normal/dev correlation and order",
+      "ms": 10.98
+    },
+    {
+      "name": "Independent exhaustive enumeration: Psychic/mortal FNP intersections",
+      "ms": 1.59
+    },
+    {
+      "name": "Order-sensitive fixture: normal D1 then mortal D2, N2 W2",
+      "ms": 0.09
+    },
+    {
+      "name": "FNP chooses one applicable best threshold by independent markers",
+      "ms": 0.1
+    },
+    {
+      "name": "Psychic source selection and cover; ignored sources produce baseline",
+      "ms": 2.33
+    },
+    {
+      "name": "Natural1 fails; natural critical beats threshold; no modified critical",
+      "ms": 0.03
+    },
+    {
+      "name": "Boundary queries, absorbing wipe, potential exceeds actual capacity",
+      "ms": 0.51
+    },
+    {
+      "name": "Validation rejects blank/negative/fraction/invalid dice and huge inputs",
+      "ms": 35.16
+    },
+    {
+      "name": "Rule gap combinations return no calculated result",
+      "ms": 0.44
+    },
+    {
+      "name": "Hit modifier +1 changes complete binomial distribution",
+      "ms": 0.41
+    },
+    {
+      "name": "Wound modifier +1 and simultaneous hit+wound modifiers",
+      "ms": 0.38
+    },
+    {
+      "name": "Sum each roll source before capping both signs",
+      "ms": 2.46
+    },
+    {
+      "name": "BS/WS 2+..6+ cap is separate from roll +/-1 cap",
+      "ms": 2.42
+    },
+    {
+      "name": "Cover worsens ranged BS; melee ignores cover; Psychic can ignore cover",
+      "ms": 0.27
+    },
+    {
+      "name": "Psychic ignores selected sources before summing; cannot ignore wound modifiers",
+      "ms": 0.12
+    },
+    {
+      "name": "Modifiers preserve critical faces and natural1, including Torrent",
+      "ms": 1.72
+    },
+    {
+      "name": "Direct and stats modes remain equal with cover and stacked modifiers",
+      "ms": 0.97
+    }
+  ],
+  "benchmarks": [
+    {
+      "name": "default",
+      "ms": 0,
+      "work": 238,
+      "estimate": {
+        "ops": 1250,
+        "states": 11,
+        "maxPackets": 10,
+        "maxR": 20
+      },
+      "sums": {
+        "R": 0.9999999999999992,
+        "L": 0.9999999999999991,
+        "K": 0.9999999999999991
+      }
+    },
+    {
+      "name": "60 attacks random D6",
+      "ms": 7,
+      "work": 80642,
+      "estimate": {
+        "ops": 117114,
+        "states": 61,
+        "maxPackets": 60,
+        "maxR": 360
+      },
+      "sums": {
+        "R": 0.9999999999999951,
+        "L": 0.999999999999995,
+        "K": 0.9999999999999951
+      }
+    },
+    {
+      "name": "20 attacks sustained/dev",
+      "ms": 29,
+      "work": 45620,
+      "estimate": {
+        "ops": 54408,
+        "states": 861,
+        "maxPackets": 40,
+        "maxR": 120
+      },
+      "sums": {
+        "R": 0.999999999999998,
+        "L": 0.9999999999999984,
+        "K": 0.9999999999999987
+      }
+    },
+    {
+      "name": "300 plain attacks",
+      "ms": 82,
+      "work": 180906,
+      "estimate": {
+        "ops": 277524,
+        "states": 301,
+        "maxPackets": 300,
+        "maxR": 300
+      },
+      "sums": {
+        "R": 0.9999999999999767,
+        "L": 0.9999999999999767,
+        "K": 0.9999999999999767
+      }
+    }
+  ],
+  "reference": {
+    "R": [
+      0.1615055828898456,
+      0,
+      0.3230111657796912,
+      0,
+      0.29071004920172205,
+      0,
+      0.15504535957425175,
+      0,
+      0.054265875850988125,
+      0,
+      0.013023810204237152,
+      0,
+      0.0021706350340395253,
+      0,
+      0.0002480725753188029,
+      0,
+      0.000018605443148910216,
+      0,
+      8.269085843960096e-7,
+      0,
+      1.6538171687920194e-8
+    ],
+    "L": [
+      0.1615055828898456,
+      0,
+      0.3230111657796912,
+      0,
+      0.29071004920172205,
+      0,
+      0.15504535957425175,
+      0,
+      0.054265875850988125,
+      0,
+      0.015461966703500474
+    ],
+    "K": [
+      0.1615055828898456,
+      0.3230111657796912,
+      0.29071004920172205,
+      0.15504535957425175,
+      0.054265875850988125,
+      0.015461966703500474
+    ],
+    "means": {
+      "R": 3.3333333333333304,
+      "L": 3.327881359654691,
+      "K": 1.6639406798273455
+    },
+    "wipe": 0.015461966703500474,
+    "sums": {
+      "R": 0.9999999999999992,
+      "L": 0.9999999999999991,
+      "K": 0.9999999999999991
+    },
+    "elapsed": 0,
+    "work": 238,
+    "budget": {
+      "ops": 1250,
+      "states": 11,
+      "maxPackets": 10,
+      "maxR": 20
+    },
+    "thresholds": {
+      "hit": 3,
+      "wound": 4,
+      "save": 4
+    },
+    "fnp": {
+      "normal": 7,
+      "mortal": 7
+    }
+  },
+  "environment": {
+    "node": "v24.19.0",
+    "platform": "linux"
+  },
+  "date": "2026-10-16 Asia/Taipei"
+}
