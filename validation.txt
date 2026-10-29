@@ -1,0 +1,2 @@
+實測：六份官方PDF下載、PDF文字擷取與分段、頁碼與唯一編號、中文第18頁圖示補充、分段重疊、固定匯入與程式格語法。
+未測：Colab套件安裝、Embedding模型推論、FAISS完整建庫、Groq API、Gradio端到端、公開ZIP下載與Colab共用權限。

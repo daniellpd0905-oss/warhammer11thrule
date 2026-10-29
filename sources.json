@@ -1,0 +1,50 @@
+[
+  {
+    "source_id": "core_en",
+    "title": "核心規則（英文）",
+    "language": "en",
+    "kind": "core",
+    "url": "https://assets.warhammer-community.com/eng_01-06_warhammer40k_new40k_core_rules-was6fbu1ix-hfewhmxyiy.pdf",
+    "enabled": true
+  },
+  {
+    "source_id": "updates_en",
+    "title": "通用規則更新（英文）",
+    "language": "en",
+    "kind": "update",
+    "url": "https://assets.warhammer-community.com/eng_wh40k_core&key_universal_rules_updates-lu3grocned-rphh78bl6k.pdf",
+    "enabled": true
+  },
+  {
+    "source_id": "core_zh",
+    "title": "核心規則（簡體中文）",
+    "language": "zh",
+    "kind": "core",
+    "url": "https://assets.warhammer-community.com/chi_01-06_warhammer40k_new40k_core_rules-gihrxgzhgo-iickazpeog.pdf",
+    "enabled": true
+  },
+  {
+    "source_id": "updates_zh",
+    "title": "通用規則更新（簡體中文）",
+    "language": "zh",
+    "kind": "update",
+    "url": "https://assets.warhammer-community.com/chi_wh40k_core&key_universal_rules_updates-jldybkdif4-wfbo8jewfg.pdf",
+    "enabled": true
+  },
+  {
+    "source_id": "event_en",
+    "title": "賽事指南（英文）",
+    "language": "en",
+    "kind": "event",
+    "url": "https://assets.warhammer-community.com/eng_14-10_wh40k_event_companion-rdwnqprl4c-nj8oqogadv.pdf",
+    "enabled": true
+  },
+  {
+    "source_id": "event_zh",
+    "title": "賽事指南（簡體中文）",
+    "language": "zh",
+    "kind": "event",
+    "url": "https://assets.warhammer-community.com/chi_14-10_wh40k_event_companion-0lkqm4w0bw-pwbbufksvw.pdf",
+    "enabled": true
+  }
+]

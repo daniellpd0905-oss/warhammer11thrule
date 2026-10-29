@@ -1,0 +1,44 @@
+[
+  {
+    "id": "core_en",
+    "status": "ok",
+    "pages": "Pages:           88",
+    "chars": 241661,
+    "sample": "                                 CORE RULES\n   In the grim darkness of the\n  far future, Humanity teeters\n upon the brin"
+  },
+  {
+    "id": "updates_en",
+    "status": "ok",
+    "pages": "Pages:           1",
+    "chars": 2281,
+    "sample": "                         UNIVERSAL RULES UPDATES\n                                                                 VERSIO"
+  },
+  {
+    "id": "core_zh",
+    "status": "ok",
+    "pages": "Pages:           88",
+    "chars": 100991,
+    "sample": "                   核心规则\n在遥远未来的黑暗中，人类正徘徊于\n灭绝的边缘。纵横银河的人类帝国被\n凶残异形、阴险叛徒，以及来自亚\n空间的恶魔包围，又一次开始指望\n伟大英雄能够降临并驱散这些袭来的\n      黑暗。\n\n  "
+  },
+  {
+    "id": "updates_zh",
+    "status": "ok",
+    "pages": "Pages:           1",
+    "chars": 864,
+    "sample": "                    通用规则更新\n                                 版本 1.1\n                       自 2026 年 8 月 26 日起适用于对战模式\n\n本文档"
+  },
+  {
+    "id": "event_en",
+    "status": "ok",
+    "pages": "Pages:           93",
+    "chars": 184587,
+    "sample": "           WARHAMMER EVENT\n              COMPANION\n                 VERSION 1.3\nWHAT'S NEW?                             "
+  },
+  {
+    "id": "event_zh",
+    "status": "ok",
+    "pages": "Pages:           93",
+    "chars": 123318,
+    "sample": "        战锤赛事手册\n                         版本 1.3\n\n\n更新了什么？                             战锤赛事任务流程\n▪ 底座尺寸指南：爆炸喷气战机更新。         "
+  }
+]
